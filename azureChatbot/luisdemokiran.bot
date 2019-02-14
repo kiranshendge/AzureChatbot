@@ -1,0 +1,61 @@
+{
+  "name": "luisdemokiran",
+  "padlock": "7X6D8U/Hyz4e02xXC14nEA==!7Vq36FgdQv/Q33c43CLBipK4N95mAb1E1jueUyRhE6VF2ySwfZBveUYwlrn1P8TI",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61",
+      "subscriptionId": "23b0610a-c725-436b-9013-d8449f3f2bf2",
+      "resourceGroup": "demokiran",
+      "serviceName": "luisdemokiran",
+      "type": "abs",
+      "name": "luisdemokiran",
+      "id": "1"
+    },
+    {
+      "connectionString": "uDmgyqTE2sWIHmmPUK/zpA==!Fzi51PTiWcctkhS4RwY1aTSsNHqCyTGBfwyu7JDiemXzDw4BCkTEku1NNappf5A+o8MVu0OHMKI/N0Q394JwO4hqWjjOIY4MH57C6NJ5FnySpBJde4U2njFtck3iBFUzUhliLC/IFWA2IZUAHJ1+smjdKgHzZpt44ovNhlbmZucwywOMS47to8p83dcXX/rY2z/W+xtQ/OB+TEo9ZATeM5VLiz8DroF9qC9h2MSwa2A=",
+      "tenantId": "76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61",
+      "subscriptionId": "23b0610a-c725-436b-9013-d8449f3f2bf2",
+      "resourceGroup": "demokiran",
+      "serviceName": "luisdemokiranbbca",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "e5ae2a32-03d3-4f68-8c34-8351b93ec05f",
+      "appPassword": "OjTKkWwMF4JTUSYWS4ZbNw==!pz6HgmmctY8aVosHvfT+BEcrD34KTbfzdHqZ/hh9T/IrHjF6ON8Jqboja83lqyHO",
+      "endpoint": "https://luisdemokiran.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    },
+    {
+      "instrumentationKey": "jriCdSdDsyp92CkWMyVDkg==!Xx5Nhc03r8zjjqK+HZsylprBNXc+rNlV3K4rXfne0Ng3klKKg1R70JdovbTcufPJ",
+      "applicationId": "f391f965-a339-497c-8101-d3672deba7a9",
+      "apiKeys": {},
+      "tenantId": "76a2ae5a-9f00-4f6b-95ed-5d33d77c4d61",
+      "subscriptionId": "23b0610a-c725-436b-9013-d8449f3f2bf2",
+      "resourceGroup": "demokiran",
+      "serviceName": "luisdemokiranteymcv",
+      "type": "appInsights",
+      "id": "5"
+    },
+    {
+      "appId": "2f7c072c-d894-4037-9da4-42c0a197808c",
+      "authoringKey": "K5zZBlOFuoB5EhktPSX+NA==!DyzkDEb7vFWGh6uIfetLbobJi1i48V9odbgU8xGEUolaYMkdkRw87H7PLMfrvH8Y",
+      "version": "0.1",
+      "region": "westus",
+      "type": "luis",
+      "name": "BasicBotLuisApplication",
+      "id": "6"
+    }
+  ]
+}

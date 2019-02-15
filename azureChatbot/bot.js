@@ -116,7 +116,7 @@ class BasicBot {
         await step.next(-1);
     }
     async promptForFilter(step){
-        await step.prompt(CAR_FILTER_PROMPT, 'Would you like to further filter the result', ['Yes', 'No', 'Show me the list']);
+        await step.prompt(CAR_FILTER_PROMPT, 'Would you like to further filter the result', ['Yes', 'No']);
     
     }
     
@@ -148,7 +148,7 @@ class BasicBot {
             // Perform a call to LUIS to retrieve results for the user's message.
             const results = await this.luisRecognizer.recognize(context);
             console.log("results:", results);
-            selectQuery = await query.createQuery(results, conversationData,utterance);
+            selectQuery = await query.createQuery(results, conversationData);
             console.log(selectQuery);
             console.log(conversationData.query);
             await this.conversationData.set(context, conversationData);
@@ -199,7 +199,7 @@ class BasicBot {
                 // Perform a call to LUIS to retrieve results for the user's message.
                 const results = await this.luisRecognizer.recognize(context);
                 console.log("results:", results);
-                selectQuery = await query.createQuery(results, conversationData,utterance);
+                selectQuery = await query.createQuery(results, conversationData);
                 console.log(selectQuery);
                 console.log(conversationData.query);
                 await this.conversationData.set(context, conversationData);

@@ -1,7 +1,7 @@
 ﻿var mapping = require('./mapping.json');
 const StringBuilder = require('string-builder');
 module.exports = {
-    createQuery: async(results, conversationData,utterance) => {
+    createQuery: async(results, conversationData) => {
     var prevConv = false;
     var currConv = false;
     var andQuery = '';

@@ -1,12 +1,12 @@
-var mapping = require('./mapping.json');
+﻿var mapping = require('./mapping.json');
 const StringBuilder = require('string-builder');
 module.exports = {
-    createQuery: async(results, conversationData) => {
+    createQuery: async(results, conversationData,utterance) => {
     var prevConv = false;
     var currConv = false;
     var andQuery = '';
     var topQueryIntent = results.luisResult.topScoringIntent.intent;
-    if (topQueryIntent.indexOf("CountOfCars") != -1 || topQueryIntent.indexOf("PreviousCars") != -1) {
+    if (topQueryIntent.indexOf("CountOfCars") != -1 || topQueryIntent.indexOf("PreviousCars") != -1 || conversationData.continueContext == true) {
         currConv = true;
         if (conversationData.query != '' && topQueryIntent.indexOf("PreviousCars") == -1)
             andQuery = conversationData.query + ' AND ';
@@ -39,7 +39,7 @@ module.exports = {
         sb.append(' WHERE ');
         sb.append(andQuery)
     }
-    if (entityValues != null && entityValues.length > 0) {
+    if ((entityValues != null && entityValues.length > 0) && (topQueryIntent.indexOf("PreviousCars") == -1)) {
 
         sb.append(' WHERE ');
         for (var i = 0; i < entityValues.length; ++i) {

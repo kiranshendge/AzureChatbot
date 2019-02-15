@@ -4,9 +4,9 @@
 // bot.js is your main bot dialog entry point for handling activity types
 
 // Import required Bot Builder
-const sql = require('mssql');
-var  conn  =  require('./dbConnection');
-var  query  =  require('./query');
+const sql = require('mssql');
+var conn = require('./dbConnection');
+var query = require('./query');
 const config = require('./config');
 const { ActivityTypes, CardFactory, builder } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
@@ -15,6 +15,7 @@ const { DialogSet, DialogTurnStatus } = require('botbuilder-dialogs');
 const { UserProfile } = require('./dialogs/greeting/userProfile');
 const { WelcomeCard } = require('./dialogs/welcome');
 const { GreetingDialog } = require('./dialogs/greeting');
+var vehicleCard = require('./resources/vehicleResult.json');
 
 // Greeting Dialog ID
 const GREETING_DIALOG = 'greetingDialog';
@@ -42,7 +43,7 @@ const { ChoicePrompt, NumberPrompt, TextPrompt, WaterfallDialog } = require('bot
 const SHOW_CARS = 'show_cars'
 const SHOW_FILTER = 'show_filter'
 const CAR_FILTER_PROMPT = 'car_filter_prompt'
-var secondOption = false;    
+var secondOption = false;
 
 
 /**
@@ -111,15 +112,15 @@ class BasicBot {
         this.userState = userState;
     }
 
-    async getpromptFilterValue(step){
+    async getpromptFilterValue(step) {
         await step.context.sendActivity(`you have selected ${step.result.value}`);
         await step.next(-1);
     }
-    async promptForFilter(step){
+    async promptForFilter(step) {
         await step.prompt(CAR_FILTER_PROMPT, 'Would you like to further filter the result', ['Yes', 'No']);
-    
+
     }
-    
+
     /**
      * Driver code that does one of the following:
      * 1. Display a welcome card upon receiving ConversationUpdate activity
@@ -130,99 +131,169 @@ class BasicBot {
      * @param {Context} context turn context from the adapter
      */
     async onTurn(context) {
-        if((context.activity.text || '').trim().toLowerCase() === 'go to second option')
-        { 
+        if ((context.activity.text || '').trim().toLowerCase() === 'go to second option') {
             secondOption = true;
         }
-        if((context.activity.text || '').trim().toLowerCase() === 'go to first option')
-        { 
+        if ((context.activity.text || '').trim().toLowerCase() === 'go to first option') {
             secondOption = false;
         }
         const utterance = (context.activity.text || '').trim().toLowerCase();
-        if(secondOption == false && (context.activity.text || '').trim().toLowerCase() != 'go to first option')
-        {
-        var setCountFlag = false;
-        var selectQuery, result = '';
-        if (context.activity.type === ActivityTypes.Message) {
-            const conversationData = await this.conversationData.get(context, { intent: '', query: '' });
-            // Perform a call to LUIS to retrieve results for the user's message.
-            const results = await this.luisRecognizer.recognize(context);
-            console.log("results:", results);
-            selectQuery = await query.createQuery(results, conversationData);
-            console.log(selectQuery);
-            console.log(conversationData.query);
-            await this.conversationData.set(context, conversationData);
-            await this.conversationState.saveChanges(context);
-            result = await conn.getVehicles(selectQuery);
-            await context.sendActivity(`Result : ${result}`);
-            // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
-            const topIntent = results.luisResult.topScoringIntent;
-            console.log("topintent", topIntent);            
-        } else if (context.activity.type === ActivityTypes.ConversationUpdate &&
-            context.activity.recipient.id !== context.activity.membersAdded[0].id) {
-            // If the Activity is a ConversationUpdate, send a greeting message to the user.
-            //await context.sendActivity('Welcome to the LUIS Demo sample! Send me a message and I will try to predict your intent.');
-        } else if (context.activity.type !== ActivityTypes.ConversationUpdate) {
-            // Respond to all other Activity types.
-            await context.sendActivity(`[${ context.activity.type }]-type activity detected.`);
-        }
-    }
-        if(secondOption == true && (context.activity.text || '').trim().toLowerCase() != 'go to second option')
-        {   
+        if (secondOption == false && (context.activity.text || '').trim().toLowerCase() != 'go to first option') {
             var setCountFlag = false;
             var selectQuery, result = '';
-            
             if (context.activity.type === ActivityTypes.Message) {
-                const conversationData = await this.conversationData.get(context, { intent: '', query: '', continueContext: false });
-                //dialog code
-                const dc = await this.dialogs.createContext(context);
-                await dc.continueDialog();      
-                
-                if(utterance === 'no')
-                {
-                    conversationData.query = '';
-                    conversationData.continueContext = false;
-                    await this.conversationData.set(context, conversationData);
-                    await this.conversationState.saveChanges(context);
-
-                }
-                if(utterance === 'yes')
-                {
-                    conversationData.continueContext = true;
-                    await this.conversationData.set(context, conversationData);
-                    await this.conversationState.saveChanges(context);
-
-                }
-                //end        
-                if(utterance != 'yes' && utterance != 'no')
-                    {
+                const conversationData = await this.conversationData.get(context, { intent: '', query: '' });
                 // Perform a call to LUIS to retrieve results for the user's message.
                 const results = await this.luisRecognizer.recognize(context);
                 console.log("results:", results);
+                const topIntent = results.luisResult.topScoringIntent;
                 selectQuery = await query.createQuery(results, conversationData);
                 console.log(selectQuery);
                 console.log(conversationData.query);
                 await this.conversationData.set(context, conversationData);
                 await this.conversationState.saveChanges(context);
                 result = await conn.getVehicles(selectQuery);
-                await context.sendActivity(`Result : ${result}`);
-                // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
-                const topIntent = results.luisResult.topScoringIntent;
-                console.log("topintent", topIntent);
-                
-                await dc.beginDialog(SHOW_FILTER);
+                //await context.sendActivity(`Result : ${result}`);
+                if (topIntent.intent !== "CountOfCars") {
+                    var remainingCars;
+                    var y = 0;
+                    var carList = result[0];
+                    if (carList.length > 5) {
+                        remainingCars = carList.length - 5;
+                        y = 5
+                    }
+                    else {
+                        y = carList.length - 1;
+                        remainingCars = 0;
+                        console.log(i);
+                    }
+                    for (var i = 0; i <= y; i++) {
+                        vehicleCard.body[0].columns[0].items[i + 1].text = carList[i].vehicle_series;
+                        vehicleCard.body[0].columns[1].items[i + 1].text = carList[i].color;
+                        vehicleCard.body[0].columns[2].items[i + 1].text = carList[i].seats.toString();
+                    }
 
-            }
+                    const randomlySelectedCard = vehicleCard;
+                    if (remainingCars > 0) {
+                        await context.sendActivity({
+                            text: `Showing 5 cars. There are/is more ${remainingCars} cars/car Please click on below provided link to get full info:`,
+                            attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
+
+                        });
+
+                    }
+                    else {
+                        await context.sendActivity({
+                            text: `List of Cars`,
+                            attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
+                        });
+                    }
+                } else {
+                    await context.sendActivity(JSON.stringify(result));
+                }
+
+                // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
+
+                console.log("topintent", topIntent);
             } else if (context.activity.type === ActivityTypes.ConversationUpdate &&
                 context.activity.recipient.id !== context.activity.membersAdded[0].id) {
                 // If the Activity is a ConversationUpdate, send a greeting message to the user.
                 //await context.sendActivity('Welcome to the LUIS Demo sample! Send me a message and I will try to predict your intent.');
             } else if (context.activity.type !== ActivityTypes.ConversationUpdate) {
                 // Respond to all other Activity types.
-                await context.sendActivity(`[${ context.activity.type }]-type activity detected.`);
+                await context.sendActivity(`[${context.activity.type}]-type activity detected.`);
             }
         }
-}
+        if (secondOption == true && (context.activity.text || '').trim().toLowerCase() != 'go to second option') {
+            var setCountFlag = false;
+            var selectQuery, result = '';
+
+            if (context.activity.type === ActivityTypes.Message) {
+                const conversationData = await this.conversationData.get(context, { intent: '', query: '', continueContext: false });
+                //dialog code
+                const dc = await this.dialogs.createContext(context);
+                await dc.continueDialog();
+
+                if (utterance === 'no') {
+                    conversationData.query = '';
+                    conversationData.continueContext = false;
+                    await this.conversationData.set(context, conversationData);
+                    await this.conversationState.saveChanges(context);
+
+                }
+                if (utterance === 'yes') {
+                    conversationData.continueContext = true;
+                    await this.conversationData.set(context, conversationData);
+                    await this.conversationState.saveChanges(context);
+
+                }
+                //end        
+                if (utterance != 'yes' && utterance != 'no') {
+                    // Perform a call to LUIS to retrieve results for the user's message.
+                    const results = await this.luisRecognizer.recognize(context);
+                    console.log("results:", results);
+                    selectQuery = await query.createQuery(results, conversationData);
+                    console.log(selectQuery);
+                    console.log(conversationData.query);
+                    await this.conversationData.set(context, conversationData);
+                    await this.conversationState.saveChanges(context);
+                    result = await conn.getVehicles(selectQuery);
+                    //await context.sendActivity(`Result : ${result}`);
+                    if (topIntent.intent !== "CountOfCars") {
+                        var remainingCars;
+                        var y = 0;
+                        var carList = result[0];
+                        if (carList.length > 5) {
+                            remainingCars = carList.length - 5;
+                            y = 5
+                        }
+                        else {
+                            y = carList.length - 1;
+                            remainingCars = 0;
+                            console.log(i);
+                        }
+                        for (var i = 0; i <= y; i++) {
+                            vehicleCard.body[0].columns[0].items[i + 1].text = carList[i].vehicle_series;
+                            vehicleCard.body[0].columns[1].items[i + 1].text = carList[i].color;
+                            vehicleCard.body[0].columns[2].items[i + 1].text = carList[i].seats.toString();
+                        }
+
+                        const randomlySelectedCard = vehicleCard;
+                        if (remainingCars > 0) {
+                            await context.sendActivity({
+                                text: `Showing 5 cars. There are/is more ${remainingCars} cars/car Please click on below provided link to get full info:`,
+                                attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
+
+                            });
+
+                        }
+                        else {
+                            await context.sendActivity({
+                                text: `List of Cars`,
+                                attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
+                            });
+                        }
+                    } else {
+                        await context.sendActivity(JSON.stringify(result));
+                    }
+
+                    // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
+                    const topIntent = results.luisResult.topScoringIntent;
+                    console.log("topintent", topIntent);
+
+                    await dc.beginDialog(SHOW_FILTER);
+
+                }
+            } else if (context.activity.type === ActivityTypes.ConversationUpdate &&
+                context.activity.recipient.id !== context.activity.membersAdded[0].id) {
+                // If the Activity is a ConversationUpdate, send a greeting message to the user.
+                //await context.sendActivity('Welcome to the LUIS Demo sample! Send me a message and I will try to predict your intent.');
+            } else if (context.activity.type !== ActivityTypes.ConversationUpdate) {
+                // Respond to all other Activity types.
+                await context.sendActivity(`[${context.activity.type}]-type activity detected.`);
+            }
+        }
+    }
 }
 
 module.exports.BasicBot = BasicBot;

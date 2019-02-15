@@ -10,7 +10,7 @@ module.exports = {
 
             // console.dir(data);
             // console.log(JSON.stringify(data.recordsets, null, 2));
-            result = JSON.stringify(data.recordsets, null, 2);
+            result = data.recordsets; //JSON.stringify(data.recordsets, null, 2);
             sql.close();
             return result;
         } catch (err) {

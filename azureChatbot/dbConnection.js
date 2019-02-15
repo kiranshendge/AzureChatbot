@@ -1,23 +1,10 @@
 const sql = require('mssql');
-
-const config =
-{
-    user: 'sqladmin', // update me
-    password: 'pass@1234', // update me
-    server: 'demokiran.database.windows.net',
-    database: 'vehicles', // update me
-    options:
-    {
-        database: 'vehicles', //update me
-        encrypt: true
-    }
-}
+const config = require('./config');
 module.exports = {
     // var connection = new Connection(config);
-
     getVehicles: async (query) => {
         try {
-            await sql.connect(config);
+            await sql.connect(config.sqlConfig);
             // const data = await sql.query(`SELECT v.knr , v.Aggregate, v.seats, v.color FROM [dbo].[vehicles] v where 1=1 ${query}`);
             const data = await sql.query(`${query}`);
 

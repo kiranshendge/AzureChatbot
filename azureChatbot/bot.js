@@ -166,7 +166,7 @@ class BasicBot {
                     var carList = result[0];
                     if (carList.length > 5) {
                         remainingCars = carList.length - 5;
-                        y = 5
+                        y = 4
                     }
                     else {
                         y = carList.length - 1;
@@ -192,7 +192,7 @@ class BasicBot {
                         });
                     }
                 } else {
-                    await context.sendActivity(JSON.stringify(result));
+                    await context.sendActivity(JSON.stringify(result[0][0][""]));
                 }
 
                 // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
@@ -235,6 +235,7 @@ class BasicBot {
                     // Perform a call to LUIS to retrieve results for the user's message.
                     const results = await this.luisRecognizer.recognize(context);
                     console.log("results:", results);
+                    const topIntent = results.luisResult.topScoringIntent;
                     selectQuery = await query.createQuery(results, conversationData);
                     console.log(selectQuery);
                     console.log(conversationData.query);
@@ -254,7 +255,7 @@ class BasicBot {
                         var carList = result[0];
                         if (carList.length > 5) {
                             remainingCars = carList.length - 5;
-                            y = 5
+                            y = 4
                         }
                         else {
                             y = carList.length - 1;
@@ -282,11 +283,11 @@ class BasicBot {
                             });
                         }
                     } else {
-                        await context.sendActivity(JSON.stringify(result));
+                        await context.sendActivity(JSON.stringify(result[0][0][""]));
                     }
 
                     // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
-                    const topIntent = results.luisResult.topScoringIntent;
+                    
                     console.log("topintent", topIntent);
 
                     await dc.beginDialog(SHOW_FILTER);

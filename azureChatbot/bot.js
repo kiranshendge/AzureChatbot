@@ -155,6 +155,12 @@ class BasicBot {
                 result = await conn.getVehicles(selectQuery);
                 //await context.sendActivity(`Result : ${result}`);
                 if (topIntent.intent !== "CountOfCars") {
+                    //elimintaing the results from the previous query
+                    for (var i = 0; i <= 4; i++) {
+                        vehicleCard.body[0].columns[0].items[i + 1].text = "";
+                        vehicleCard.body[0].columns[1].items[i + 1].text = "";
+                        vehicleCard.body[0].columns[2].items[i + 1].text = "";
+                    }
                     var remainingCars;
                     var y = 0;
                     var carList = result[0];
@@ -173,19 +179,16 @@ class BasicBot {
                         vehicleCard.body[0].columns[2].items[i + 1].text = carList[i].seats.toString();
                     }
 
-                    const randomlySelectedCard = vehicleCard;
                     if (remainingCars > 0) {
                         await context.sendActivity({
-                            text: `Showing 5 cars. There are/is more ${remainingCars} cars/car Please click on below provided link to get full info:`,
-                            attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
-
+                            text: `Showing 5 cars. There are/is more ${remainingCars} car/cars.`,
+                            attachments: [CardFactory.adaptiveCard(vehicleCard)]
                         });
-
                     }
                     else {
                         await context.sendActivity({
                             text: `List of Cars`,
-                            attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
+                            attachments: [CardFactory.adaptiveCard(vehicleCard)]
                         });
                     }
                 } else {
@@ -239,7 +242,13 @@ class BasicBot {
                     await this.conversationState.saveChanges(context);
                     result = await conn.getVehicles(selectQuery);
                     //await context.sendActivity(`Result : ${result}`);
+
                     if (topIntent.intent !== "CountOfCars") {
+                        for (var i = 0; i <= 4; i++) {
+                            vehicleCard.body[0].columns[0].items[i + 1].text = "";
+                            vehicleCard.body[0].columns[1].items[i + 1].text = "";
+                            vehicleCard.body[0].columns[2].items[i + 1].text = "";
+                        }
                         var remainingCars;
                         var y = 0;
                         var carList = result[0];
@@ -258,11 +267,10 @@ class BasicBot {
                             vehicleCard.body[0].columns[2].items[i + 1].text = carList[i].seats.toString();
                         }
 
-                        const randomlySelectedCard = vehicleCard;
                         if (remainingCars > 0) {
                             await context.sendActivity({
-                                text: `Showing 5 cars. There are/is more ${remainingCars} cars/car Please click on below provided link to get full info:`,
-                                attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
+                                text: `Showing 5 cars. There are/is more ${remainingCars} car/cars`,
+                                attachments: [CardFactory.adaptiveCard(vehicleCard)]
 
                             });
 
@@ -270,7 +278,7 @@ class BasicBot {
                         else {
                             await context.sendActivity({
                                 text: `List of Cars`,
-                                attachments: [CardFactory.adaptiveCard(randomlySelectedCard)]
+                                attachments: [CardFactory.adaptiveCard(vehicleCard)]
                             });
                         }
                     } else {

@@ -12,42 +12,7 @@
             {
               "type": "TextBlock",
               "weight": "bolder",
-              "text": "Car Name"
-            },
-            {
-              "type": "TextBlock",
-              "separator": true,
-              "text": ""
-            },
-            {
-              "type": "TextBlock",
-              "separator": true,
-              "text": ""
-            },
-            {
-              "type": "TextBlock",
-              "separator": true,
-              "text": ""
-            },
-            {
-              "type": "TextBlock",
-              "separator": true,
-              "text": ""
-            },
-            {
-              "type": "TextBlock",
-              "separator": true,
-              "text": ""
-            }
-          ]
-        },
-        {
-          "type": "Column",
-          "items": [
-            {
-              "type": "TextBlock",
-              "weight": "bolder",
-              "text": "Model Name"
+              "text": "Vehicle Series"
             },
             {
               "type": "TextBlock",
@@ -83,6 +48,41 @@
               "type": "TextBlock",
               "weight": "bolder",
               "text": "Color"
+            },
+            {
+              "type": "TextBlock",
+              "separator": true,
+              "text": ""
+            },
+            {
+              "type": "TextBlock",
+              "separator": true,
+              "text": ""
+            },
+            {
+              "type": "TextBlock",
+              "separator": true,
+              "text": ""
+            },
+            {
+              "type": "TextBlock",
+              "separator": true,
+              "text": ""
+            },
+            {
+              "type": "TextBlock",
+              "separator": true,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "bolder",
+              "text": "No of Seats"
             },
             {
               "type": "TextBlock",

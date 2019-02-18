@@ -51,8 +51,8 @@ module.exports = {
                 andQuery = dbColumn + ' = \'' + entityValues[i].substr(entityValues[i].indexOf('-') + 1) + '\'';
             if (i < entityValues.length - 1)
                 andQuery = andQuery + ' AND ';
-            sb.append(andQuery);
         }
+        sb.append(andQuery);
     }
     var selectQueryCount = sb.toString();
     //var selectQueryDetails = sb.toString().replace('count(*)', '*');

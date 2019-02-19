@@ -181,7 +181,7 @@ class BasicBot {
 
                     if (remainingCars > 0) {
                         await context.sendActivity({
-                            text: `Showing 5 cars. There are/is more ${remainingCars} car/cars.`,
+                            text: `These are the first 5 cars. There are ${remainingCars} more.`,
                             attachments: [CardFactory.adaptiveCard(vehicleCard)]
                         });
                     }
@@ -270,7 +270,7 @@ class BasicBot {
 
                         if (remainingCars > 0) {
                             await context.sendActivity({
-                                text: `Showing 5 cars. There are/is more ${remainingCars} car/cars`,
+                                text: `These are the first 5 cars. There are ${remainingCars} more.`,
                                 attachments: [CardFactory.adaptiveCard(vehicleCard)]
 
                             });
@@ -287,7 +287,7 @@ class BasicBot {
                     }
 
                     // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
-                    
+
                     console.log("topintent", topIntent);
 
                     await dc.beginDialog(SHOW_FILTER);

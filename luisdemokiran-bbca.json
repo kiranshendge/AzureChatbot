@@ -30,7 +30,7 @@
   ],
   "entities": [
     {
-      "name": "UserName",
+      "name": "userName",
       "roles": []
     }
   ],
@@ -88,7 +88,7 @@
       "roles": []
     },
     {
-      "name": "Gearbox",
+      "name": "gearType",
       "subLists": [
         {
           "canonicalForm": "RJN",
@@ -204,7 +204,7 @@
       "roles": []
     },
     {
-      "name": "no of seats",
+      "name": "numberOfSeats",
       "subLists": [
         {
           "canonicalForm": "2",
@@ -273,7 +273,7 @@
       "roles": []
     },
     {
-      "name": "VehicleSeries",
+      "name": "vehicleSeries",
       "subLists": [
         {
           "canonicalForm": "47",
@@ -375,6 +375,11 @@
       "entities": []
     },
     {
+      "text": "can we get h1h1 car with svl gearbox h1 roof 8w series and 5 seats",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
       "text": "can we have list of a2a2 cars with srk gearbox a2 roof 4 seats and 4g model",
       "intent": "SearchForCars",
       "entities": []
@@ -459,7 +464,7 @@
       "intent": "Greeting",
       "entities": [
         {
-          "entity": "UserName",
+          "entity": "userName",
           "startPos": 6,
           "endPos": 10
         }
@@ -505,7 +510,7 @@
       "intent": "Greeting",
       "entities": [
         {
-          "entity": "UserName",
+          "entity": "userName",
           "startPos": 3,
           "endPos": 6
         }
@@ -516,7 +521,7 @@
       "intent": "Greeting",
       "entities": [
         {
-          "entity": "UserName",
+          "entity": "userName",
           "startPos": 15,
           "endPos": 21
         }
@@ -535,6 +540,11 @@
     {
       "text": "how are you?",
       "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how many cars are of 8w series",
+      "intent": "CountOfCars",
       "entities": []
     },
     {
@@ -613,6 +623,11 @@
       "entities": []
     },
     {
+      "text": "show me list of all cars",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
       "text": "show me list of cars with color h1h1",
       "intent": "SearchForCars",
       "entities": []
@@ -662,7 +677,7 @@
       "intent": "Greeting",
       "entities": [
         {
-          "entity": "UserName",
+          "entity": "userName",
           "startPos": 7,
           "endPos": 9
         }

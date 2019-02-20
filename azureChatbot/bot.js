@@ -41,8 +41,12 @@ const USER_LOCATION_ENTITIES = ['userLocation', 'userLocation_patternAny'];
 //dialog code
 const { ChoicePrompt, NumberPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
 const SHOW_CARS = 'show_cars'
+
+/*
+For second option
 const SHOW_FILTER = 'show_filter'
 const CAR_FILTER_PROMPT = 'car_filter_prompt'
+*/
 var secondOption = false;
 
 
@@ -99,12 +103,16 @@ class BasicBot {
         // Add the Greeting dialog to the set
         this.dialogs.add(new GreetingDialog(GREETING_DIALOG, this.userProfileAccessor));
         //dialog code
+
+        /*
+        For second option
         this.dialogs.add(new ChoicePrompt(CAR_FILTER_PROMPT));
         this.dialogs.add(new WaterfallDialog(SHOW_FILTER, [
             this.promptForFilter.bind(this),
             this.getpromptFilterValue.bind(this)
         ]));
-        //end
+        */
+
 
         this.conversationData = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
         // The state management objects for the conversation and user state.
@@ -112,6 +120,8 @@ class BasicBot {
         this.userState = userState;
     }
 
+    /*
+    For second option
     async getpromptFilterValue(step) {
         await step.context.sendActivity(`you have selected ${step.result.value}`);
         await step.next(-1);
@@ -120,6 +130,7 @@ class BasicBot {
         await step.prompt(CAR_FILTER_PROMPT, 'Would you like to further filter the result', ['Yes', 'No']);
 
     }
+    */
 
     /**
      * Driver code that does one of the following:
@@ -160,7 +171,6 @@ class BasicBot {
                     await context.sendActivity("Canceled the conversation State");
                     return;
                 }
-
 
                 selectQuery = await query.createQuery(results, conversationData);
                 console.log(selectQuery);
@@ -223,6 +233,7 @@ class BasicBot {
             }
         }
         /*
+        For second option
         if (secondOption == true && (context.activity.text || '').trim().toLowerCase() != 'go to second option') {
             var setCountFlag = false;
             var selectQuery, result = '';

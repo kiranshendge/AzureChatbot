@@ -132,7 +132,7 @@ class BasicBot {
      */
     async onTurn(context) {
         if ((context.activity.text || '').trim().toLowerCase() === 'go to second option') {
-            secondOption = true;
+            secondOption = false;
         }
         if ((context.activity.text || '').trim().toLowerCase() === 'go to first option') {
             secondOption = false;
@@ -147,6 +147,21 @@ class BasicBot {
                 const results = await this.luisRecognizer.recognize(context);
                 console.log("results:", results);
                 const topIntent = results.luisResult.topScoringIntent;
+
+                //Interruptions
+                if (topIntent.intent === "Help") {
+                    await context.sendActivity(`Let me try to provide some help.`);
+                    await context.sendActivity(`You can ask a query like 'Show me list of h1h1 cars'`);
+                    return;
+                }
+                if (topIntent.intent === "Cancel") {
+                    await this.conversationState.clear(context);
+                    await this.conversationState.saveChanges(context);
+                    await context.sendActivity("Canceled the conversation State");
+                    return;
+                }
+
+
                 selectQuery = await query.createQuery(results, conversationData);
                 console.log(selectQuery);
                 console.log(conversationData.query);
@@ -207,6 +222,7 @@ class BasicBot {
                 await context.sendActivity(`[${context.activity.type}]-type activity detected.`);
             }
         }
+        /*
         if (secondOption == true && (context.activity.text || '').trim().toLowerCase() != 'go to second option') {
             var setCountFlag = false;
             var selectQuery, result = '';
@@ -302,6 +318,7 @@ class BasicBot {
                 await context.sendActivity(`[${context.activity.type}]-type activity detected.`);
             }
         }
+        */
     }
 }
 

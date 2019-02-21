@@ -48,7 +48,7 @@ module.exports = {
             if (currConv)
                 andQuery = andQuery + dbColumn + ' = \'' + entityValues[i].substr(entityValues[i].indexOf('-') + 1) + '\'';
             else
-                andQuery = dbColumn + ' = \'' + entityValues[i].substr(entityValues[i].indexOf('-') + 1) + '\'';
+                andQuery = andQuery + dbColumn + ' = \'' + entityValues[i].substr(entityValues[i].indexOf('-') + 1) + '\'';
             if (i < entityValues.length - 1)
                 andQuery = andQuery + ' AND ';
         }

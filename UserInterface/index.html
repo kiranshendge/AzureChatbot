@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>Web Chat: Avatar with images and initials</title>
+  <!--
+      For demonstration purposes, we are using the development branch of Web Chat at "/master/webchat.js".
+      When you are using Web Chat for production, you should use the latest stable release at "/latest/webchat.js",
+      or lock down on a specific version with the following format: "/4.1.0/webchat.js".
+    -->
+  <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
+  <style>
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0
+    }
+
+    #webchat {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="webchat" role="main"></div>
+  <script>
+    (async function () {
+      // https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication
+
+      const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate',
+        {
+          method: 'POST',
+          headers: { "Authorization": "Bearer 2e8CBc57Gr0.iAnbeOKaQth4gMO-xdwE_yjCeSUWOI90N7Y7hAU7KN4" }
+        });
+      // const { token } = await res.json();
+      const { token } = await res.json();
+
+      const styleOptions = {
+        // botAvatarImage: './VWimage.jfif',
+        botAvatarInitials: 'VW',
+        userAvatarImage: './user.jpg',
+        userAvatarInitials: 'WC'
+      };
+
+      /*
+
+      const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
+        if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+          dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'echo-typing' } });
+        }
+
+        return next(action);
+      });
+
+      */
+
+      window.WebChat.renderWebChat({
+        directLine: window.WebChat.createDirectLine({ token }),
+        webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
+        styleOptions,
+        //   sendTypingIndicator: true,
+        //   store,
+        resize: 'detect'
+      }, document.getElementById('webchat'));
+      document.querySelector('#webchat > *').focus();
+    })().catch(err => console.error(err));
+  </script>
+</body>
+
+</html>

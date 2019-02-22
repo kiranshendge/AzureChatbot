@@ -4,7 +4,9 @@
 <head>
   <title>Web Chat: Avatar with images and initials</title>
   <!--
-      For demonstration purposes, we are using the development branch of Web Chat at "/master/webchat.js".
+    https://stackoverflow.com/questions/54257379/pass-custom-parameters-from-webchat-control-to-bot-framework
+    https://stackoverflow.com/questions/52498711/how-to-create-be-languages-bot-in-direct-line-channel  
+    For demonstration purposes, we are using the development branch of Web Chat at "/master/webchat.js".
       When you are using Web Chat for production, you should use the latest stable release at "/latest/webchat.js",
       or lock down on a specific version with the following format: "/4.1.0/webchat.js".
     -->
@@ -30,41 +32,46 @@
   <div id="webchat" role="main"></div>
   <script>
     (async function () {
+      console.log(navigator.language)
       // https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication
 
       const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate',
         {
           method: 'POST',
-          headers: { "Authorization": "Bearer 2e8CBc57Gr0.iAnbeOKaQth4gMO-xdwE_yjCeSUWOI90N7Y7hAU7KN4" }
+          headers: { "Authorization": "Bearer TVeCl7fQzvk.EYprY6DPb55O4U_omvdSWRR5MISSP9kxFeX2zxiuE8I" }
         });
       // const { token } = await res.json();
       const { token } = await res.json();
 
       const styleOptions = {
-        // botAvatarImage: './VWimage.jfif',
+        botAvatarImage: './bot2.jpg',
         botAvatarInitials: 'VW',
-        userAvatarImage: './user.jpg',
+        userAvatarImage: './man4.jpg',
         userAvatarInitials: 'WC'
       };
 
-      /*
+      // const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
+      //   if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+      //     dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'echo-typing' } });
+      //   }
 
-      const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
-        if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
-          dispatch({ type: 'WEB_CHAT/SEND_MESSAGE', payload: { text: 'echo-typing' } });
-        }
+      //   return next(action);
+      // });
 
-        return next(action);
-      });
-
-      */
-
+      const localeLanguage = navigator.language;
+      //const localeLanguage = "german";
+      var d1 = window.WebChat.createDirectLine({ token })
       window.WebChat.renderWebChat({
-        directLine: window.WebChat.createDirectLine({ token }),
+        directLine: Object.assign({}, d1, {
+          postActivity: activity => {
+            var newActivity = Object.assign({}, activity, { channelData: { "param1": localeLanguage } });
+            return d1.postActivity(newActivity);
+          }
+        }),
         webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory(),
         styleOptions,
-        //   sendTypingIndicator: true,
-        //   store,
+        // sendTypingIndicator: true,
+        // store,
         resize: 'detect'
       }, document.getElementById('webchat'));
       document.querySelector('#webchat > *').focus();

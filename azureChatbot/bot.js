@@ -16,6 +16,7 @@ const { UserProfile } = require('./dialogs/greeting/userProfile');
 const { WelcomeCard } = require('./dialogs/welcome');
 const { GreetingDialog } = require('./dialogs/greeting');
 var vehicleCard = require('./resources/vehicleResult.json');
+const germanLuisKeys = require('./resources/germanLuisKeys.json');
 
 // Greeting Dialog ID
 const GREETING_DIALOG = 'greetingDialog';
@@ -80,7 +81,7 @@ class BasicBot {
         const luisConfig = botConfig.findServiceByNameOrId(LUIS_CONFIGURATION);
         if (!luisConfig || !luisConfig.appId) throw new Error('Missing LUIS configuration. Please follow README.MD to create required LUIS applications.\n\n');
         const luisEndpoint = luisConfig.region && luisConfig.region.indexOf('https://') === 0 ? luisConfig.region : luisConfig.getEndpoint();
-        this.luisRecognizer = new LuisRecognizer({
+        this.englishluisRecognizer = new LuisRecognizer({
             applicationId: luisConfig.appId,
             endpoint: luisEndpoint,
             // CAUTION: Its better to assign and use a subscription key instead of authoring key here.
@@ -93,6 +94,24 @@ class BasicBot {
                 //spellCheck: true,
                 //bingSpellCheckSubscriptionKey: '2dba9f72ff18406e955e00dd93067975'
             }, true);
+
+
+        //new luis recognizer for german luis
+
+        this.germanluisRecognizer = new LuisRecognizer({
+            applicationId: germanLuisKeys.applicationId,
+            endpoint: germanLuisKeys.endpoint,
+            // CAUTION: Its better to assign and use a subscription key instead of authoring key here.
+            endpointKey: germanLuisKeys.authoringKey
+        },
+            {
+                includeAllIntents: true,
+                log: true,
+                staging: false,
+                //spellCheck: true,
+                //bingSpellCheckSubscriptionKey: '2dba9f72ff18406e955e00dd93067975'
+            }, true);
+
 
         // Create the property accessors for user and conversation state
         this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
@@ -141,7 +160,8 @@ class BasicBot {
      *
      * @param {Context} context turn context from the adapter
      */
-    async onTurn(context) {
+    async onTurn(context, locale) {
+        let luisRecognizer;
         if ((context.activity.text || '').trim().toLowerCase() === 'go to second option') {
             secondOption = false;
         }
@@ -154,8 +174,18 @@ class BasicBot {
             var selectQuery, result = '';
             if (context.activity.type === ActivityTypes.Message) {
                 const conversationData = await this.conversationData.get(context, { intent: '', query: '' });
+
+                //setting the luis recognizer
+                if (locale === "german") {
+                    console.log("The luis recognizer to be set is german");
+                    luisRecognizer = this.germanluisRecognizer;
+                }
+                else {
+                    console.log("The luis recognizer to be set is English");
+                    luisRecognizer = this.englishluisRecognizer;
+                }
                 // Perform a call to LUIS to retrieve results for the user's message.
-                const results = await this.luisRecognizer.recognize(context);
+                const results = await luisRecognizer.recognize(context);
                 console.log("results:", results);
                 const topIntent = results.luisResult.topScoringIntent;
 

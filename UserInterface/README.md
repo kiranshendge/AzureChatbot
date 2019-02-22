@@ -2,7 +2,7 @@
 A simple web page with a maximized Web Chat that displays individual images (avatars) for both the bot and the user.
 
 # How to run
-- In the index.html file , replace your directline secret key after the keyword 'Bearer'.
+- In the index.html file , replace the directline secret key with your directline secret key after the keyword 'Bearer'.
 - Two ways to run it.
 - 1) Double click the file and run it.
     But the problem that will occur is that, while speaking you will be asked for permission tu turn on microphone every single time.

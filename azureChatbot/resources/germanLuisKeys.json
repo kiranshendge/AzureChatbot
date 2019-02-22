@@ -1,0 +1,5 @@
+{
+    "applicationId": "af30660c-e655-4a9a-a5fc-3012e8577565",
+    "endpoint": "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/af30660c-e655-4a9a-a5fc-3012e8577565?verbose=true&timezoneOffset=-360&subscription-key=b1a077f0b326427897f32f06bd05d83a&q=",
+    "authoringKey": "b1a077f0b326427897f32f06bd05d83a"
+}

@@ -49,6 +49,7 @@ const SHOW_FILTER = 'show_filter'
 const CAR_FILTER_PROMPT = 'car_filter_prompt'
 */
 var secondOption = false;
+var languageForRecognizer;
 
 
 /**
@@ -132,7 +133,6 @@ class BasicBot {
         ]));
         */
 
-
         this.conversationData = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
         // The state management objects for the conversation and user state.
         this.conversationState = conversationState;
@@ -162,6 +162,12 @@ class BasicBot {
      */
     async onTurn(context, locale) {
         let luisRecognizer;
+        if (locale === "de-DE") {
+            languageForRecognizer = locale;
+        }
+        if (locale === "en-US") {
+            languageForRecognizer = locale;
+        }
         if ((context.activity.text || '').trim().toLowerCase() === 'go to second option') {
             secondOption = false;
         }
@@ -176,7 +182,7 @@ class BasicBot {
                 const conversationData = await this.conversationData.get(context, { intent: '', query: '' });
 
                 //setting the luis recognizer
-                if (locale === "de-DE") {
+                if (languageForRecognizer === "de-DE") {
                     console.log("The luis recognizer to be set is german");
                     luisRecognizer = this.germanluisRecognizer;
                 }

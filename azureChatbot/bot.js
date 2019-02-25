@@ -176,7 +176,7 @@ class BasicBot {
                 const conversationData = await this.conversationData.get(context, { intent: '', query: '' });
 
                 //setting the luis recognizer
-                if (locale === "german") {
+                if (locale === "de-DE") {
                     console.log("The luis recognizer to be set is german");
                     luisRecognizer = this.germanluisRecognizer;
                 }

@@ -1,0 +1,24 @@
+{
+    "en-US": {
+        "msg": "English message",
+        "help1": "Let me try to provide some help.",
+        "help2": "You can ask a query like 'Show me list of h1h1 cars'",
+        "cancel": "Canceled the conversation State",
+        "result1": "These are the first 5 cars. There are ${remainingCars} more.",
+        "result2": "List of Cars",
+        "greeting": "Hi User, How can I help you?",
+        "none": "I didn't understand what you just said to me.",
+        "activity": "[${context.activity.type}]-type activity detected."
+    },
+    "de-DE": {
+        "msg": "German message",
+        "help1": "Lassen Sie mich versuchen, etwas zu helfen.",
+        "help2": "Sie können eine Abfrage wie 'Zeigen Sie mir eine Liste der h1h1 Autos' an.",
+        "cancel": "Der Gesprächszustand wurde abgebrochen",
+        "result1": "Dies sind die ersten 5 Autos. Es gibt ${remainingCars} weitere.",
+        "result2": "Liste der Autos",
+        "greeting": "Hallo Benutzer, wie kann ich dir helfen?",
+        "none": "Ich habe nicht verstanden, was Sie gerade zu mir gesagt haben.",
+        "activity": "[${context.activity.type}]- Art Aktivität erkannt."
+    }
+}

@@ -8,7 +8,7 @@ const sql = require('mssql');
 var conn = require('./dbConnection');
 var query = require('./query');
 const config = require('./config');
-
+var messages = require('./messages.json');
 const { ActivityTypes, CardFactory, builder } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
 const { DialogSet, DialogTurnStatus } = require('botbuilder-dialogs');
@@ -50,7 +50,7 @@ const SHOW_FILTER = 'show_filter'
 const CAR_FILTER_PROMPT = 'car_filter_prompt'
 */
 var secondOption = false;
-var languageForRecognizer;
+
 
 
 /**
@@ -163,12 +163,10 @@ class BasicBot {
      */
     async onTurn(context, locale) {
         let luisRecognizer;
-        if (locale === "de-DE") {
-            languageForRecognizer = locale;
+        if (locale === undefined || locale === '') {
+            locale = "en-US";
         }
-        if (locale === "en-US") {
-            languageForRecognizer = locale;
-        }
+
         if ((context.activity.text || '').trim().toLowerCase() === 'go to second option') {
             secondOption = false;
         }
@@ -183,7 +181,7 @@ class BasicBot {
                 const conversationData = await this.conversationData.get(context, { intent: '', query: '' });
 
                 //setting the luis recognizer
-                if (languageForRecognizer === "de-DE") {
+                if (locale === "de-DE") {
                     console.log("The luis recognizer to be set is German");
                     luisRecognizer = this.germanluisRecognizer;
                 }
@@ -198,24 +196,25 @@ class BasicBot {
 
                 //Interruptions
                 if (topIntent.intent === "Help") {
-                    await context.sendActivity(`Let me try to provide some help.`);
-                    await context.sendActivity(`You can ask a query like 'Show me list of h1h1 cars'`);
+                    await context.sendActivity(messages[locale].help1);
+                    await context.sendActivity(messages[locale].help2);
                     return;
                 } else if (topIntent.intent === "Cancel") {
                     await this.conversationState.clear(context);
                     await this.conversationState.saveChanges(context);
-                    await context.sendActivity("Canceled the conversation State");
+                    await context.sendActivity(messages[locale].cancel);
                     return;
                 }
 
-                selectQuery = await query.createQuery(results, conversationData);
-                console.log(selectQuery);
-                console.log(conversationData.query);
-                await this.conversationData.set(context, conversationData);
-                await this.conversationState.saveChanges(context);
-                result = await conn.getVehicles(selectQuery);
-                //await context.sendActivity(`Result : ${result}`);
                 if (topIntent.intent == "SearchForCars" || topIntent.intent == "PreviousCars") {
+                    selectQuery = await query.createQuery(results, conversationData);
+                    console.log(selectQuery);
+                    console.log(conversationData.query);
+                    await this.conversationData.set(context, conversationData);
+                    await this.conversationState.saveChanges(context);
+                    result = await conn.getVehicles(selectQuery);
+                    //await context.sendActivity(`Result : ${result}`);
+
                     //elimintaing the results from the previous query
                     for (var i = 0; i <= 4; i++) {
                         vehicleCard.body[0].columns[0].items[i + 1].text = "";
@@ -242,26 +241,27 @@ class BasicBot {
 
                     if (remainingCars > 0) {
                         await context.sendActivity({
-                            text: `These are the first 5 cars. There are ${remainingCars} more.`,
+                            text: messages[locale].result1,
                             attachments: [CardFactory.adaptiveCard(vehicleCard)]
                         });
                     }
                     else {
                         await context.sendActivity({
-                            text: `List of Cars`,
+                            text: messages[locale].result2,
                             attachments: [CardFactory.adaptiveCard(vehicleCard)]
                         });
                     }
                 } else if (topIntent.intent == "CountOfCars") {
                     await context.sendActivity(JSON.stringify(result[0][0][""]));
                 } else if (topIntent.intent == "Greeting") {
-                    await context.sendActivity("Hi User, How can I help you?");
+                    // console.log(messages[locale].greeting);
+                    await context.sendActivity(messages[locale].greeting);
+                    // console.log(messages[locale].greeting);
                 } else {
-                    await context.sendActivity("I didn't understand what you just said to me.");
+                    await context.sendActivity(messages[locale].none);
                 }
 
                 // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
-
                 console.log("topintent", topIntent);
             } else if (context.activity.type === ActivityTypes.ConversationUpdate &&
                 context.activity.recipient.id !== context.activity.membersAdded[0].id) {
@@ -269,107 +269,9 @@ class BasicBot {
                 //await context.sendActivity('Welcome to the LUIS Demo sample! Send me a message and I will try to predict your intent.');
             } else if (context.activity.type !== ActivityTypes.ConversationUpdate) {
                 // Respond to all other Activity types.
-                await context.sendActivity(`[${context.activity.type}]-type activity detected.`);
+                await context.sendActivity(messages[locale].activity);
             }
         }
-        /*
-        For second option
-        if (secondOption == true && (context.activity.text || '').trim().toLowerCase() != 'go to second option') {
-            var setCountFlag = false;
-            var selectQuery, result = '';
-
-            if (context.activity.type === ActivityTypes.Message) {
-                const conversationData = await this.conversationData.get(context, { intent: '', query: '', continueContext: false });
-                //dialog code
-                const dc = await this.dialogs.createContext(context);
-                await dc.continueDialog();
-
-                if (utterance === 'no') {
-                    conversationData.query = '';
-                    conversationData.continueContext = false;
-                    await this.conversationData.set(context, conversationData);
-                    await this.conversationState.saveChanges(context);
-
-                }
-                if (utterance === 'yes') {
-                    conversationData.continueContext = true;
-                    await this.conversationData.set(context, conversationData);
-                    await this.conversationState.saveChanges(context);
-
-                }
-                //end        
-                if (utterance != 'yes' && utterance != 'no') {
-                    // Perform a call to LUIS to retrieve results for the user's message.
-                    const results = await this.luisRecognizer.recognize(context);
-                    console.log("results:", results);
-                    const topIntent = results.luisResult.topScoringIntent;
-                    selectQuery = await query.createQuery(results, conversationData);
-                    console.log(selectQuery);
-                    console.log(conversationData.query);
-                    await this.conversationData.set(context, conversationData);
-                    await this.conversationState.saveChanges(context);
-                    result = await conn.getVehicles(selectQuery);
-                    //await context.sendActivity(`Result : ${result}`);
-
-                    if (topIntent.intent !== "CountOfCars") {
-                        for (var i = 0; i <= 4; i++) {
-                            vehicleCard.body[0].columns[0].items[i + 1].text = "";
-                            vehicleCard.body[0].columns[1].items[i + 1].text = "";
-                            vehicleCard.body[0].columns[2].items[i + 1].text = "";
-                        }
-                        var remainingCars;
-                        var y = 0;
-                        var carList = result[0];
-                        if (carList.length > 5) {
-                            remainingCars = carList.length - 5;
-                            y = 4
-                        }
-                        else {
-                            y = carList.length - 1;
-                            remainingCars = 0;
-                            console.log(i);
-                        }
-                        for (var i = 0; i <= y; i++) {
-                            vehicleCard.body[0].columns[0].items[i + 1].text = carList[i].vehicle_series;
-                            vehicleCard.body[0].columns[1].items[i + 1].text = carList[i].color;
-                            vehicleCard.body[0].columns[2].items[i + 1].text = carList[i].seats.toString();
-                        }
-
-                        if (remainingCars > 0) {
-                            await context.sendActivity({
-                                text: `These are the first 5 cars. There are ${remainingCars} more.`,
-                                attachments: [CardFactory.adaptiveCard(vehicleCard)]
-
-                            });
-
-                        }
-                        else {
-                            await context.sendActivity({
-                                text: `List of Cars`,
-                                attachments: [CardFactory.adaptiveCard(vehicleCard)]
-                            });
-                        }
-                    } else {
-                        await context.sendActivity(JSON.stringify(result[0][0][""]));
-                    }
-
-                    // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.
-
-                    console.log("topintent", topIntent);
-
-                    await dc.beginDialog(SHOW_FILTER);
-
-                }
-            } else if (context.activity.type === ActivityTypes.ConversationUpdate &&
-                context.activity.recipient.id !== context.activity.membersAdded[0].id) {
-                // If the Activity is a ConversationUpdate, send a greeting message to the user.
-                //await context.sendActivity('Welcome to the LUIS Demo sample! Send me a message and I will try to predict your intent.');
-            } else if (context.activity.type !== ActivityTypes.ConversationUpdate) {
-                // Respond to all other Activity types.
-                await context.sendActivity(`[${context.activity.type}]-type activity detected.`);
-            }
-        }
-        */
     }
 }
 

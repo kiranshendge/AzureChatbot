@@ -20,5 +20,6 @@
     "pinEntity": "pin",
     "sightGlassWeek": "schaugl_wo",
     "tmEntity": "tm",
-    "targetStation": "target_station"
+    "targetStation": "target_station",
+    "bodyEntity": "body_status"
 }

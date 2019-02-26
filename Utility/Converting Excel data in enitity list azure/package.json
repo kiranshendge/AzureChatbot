@@ -1,0 +1,8 @@
+{
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "xlsx": "^0.14.1"
+  }
+}

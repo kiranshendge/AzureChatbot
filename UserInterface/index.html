@@ -14,16 +14,17 @@
   <style>
     html,
     body {
+      background-color: #1d0303;
       height: 100%
     }
 
     body {
-      margin: 0
+      margin-left: 10
     }
 
     #webchat {
       height: 100%;
-      width: 100%;
+      width: 40%;
     }
   </style>
 </head>
@@ -41,6 +42,22 @@
         });
       // const { token } = await res.json();
       const { token } = await res.json();
+      //https://github.com/Microsoft/BotFramework-WebChat/blob/master/packages/component/src/Styles/defaultStyleSetOptions.js
+      const styleSet = window.WebChat.createStyleSet({
+        backgroundColor: 'White',
+        botAvatarImage: './bot2.jpg',
+        botAvatarInitials: 'VW',
+        userAvatarImage: './man4.jpg',
+        userAvatarInitials: 'WC',
+        bubbleBackground: 'rgba(0, 0, 255, .1)',
+        bubbleFromUserBackground: 'rgba(0, 255, 0, .1)'
+      });
+
+      styleSet.textContent = {
+        ...styleSet.textContent,
+        fontFamily: '\'Comic Sans MS\', \'Arial\', sans-serif',
+        fontWeight: 'bold'
+      };
 
       // console.log(token)
       /*
@@ -51,13 +68,6 @@
       }
       */
 
-      const styleOptions = {
-        botAvatarImage: './bot2.jpg',
-        botAvatarInitials: 'VW',
-        userAvatarImage: './man4.jpg',
-        userAvatarInitials: 'WC'
-      };
-
       // zeige mir eine liste von h1h1 autos
       // wieviele fahrzeuge davon haben 5 sitze und ein svl getriebe?
       // wieviele a2a2 fahrzeuge mit einem t9 dach und einem tbr getriebe und dem model 8w gibt es?
@@ -67,7 +77,7 @@
       var dl = window.WebChat.createDirectLine({ secret: token });
       var botContainer = document.getElementById('webchat');
 
-      window.WebChat.renderWebChat({ directLine: dl, styleOptions, webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory() }, botContainer);
+      window.WebChat.renderWebChat({ directLine: dl, styleSet, webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory() }, botContainer);
 
       var activity = {
         from: {

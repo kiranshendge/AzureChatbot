@@ -8,6 +8,7 @@ const sql = require('mssql');
 var conn = require('./dbConnection');
 var query = require('./query');
 const config = require('./config');
+
 const { ActivityTypes, CardFactory, builder } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
 const { DialogSet, DialogTurnStatus } = require('botbuilder-dialogs');
@@ -183,7 +184,7 @@ class BasicBot {
 
                 //setting the luis recognizer
                 if (languageForRecognizer === "de-DE") {
-                    console.log("The luis recognizer to be set is german");
+                    console.log("The luis recognizer to be set is German");
                     luisRecognizer = this.germanluisRecognizer;
                 }
                 else {
@@ -200,8 +201,7 @@ class BasicBot {
                     await context.sendActivity(`Let me try to provide some help.`);
                     await context.sendActivity(`You can ask a query like 'Show me list of h1h1 cars'`);
                     return;
-                }
-                if (topIntent.intent === "Cancel") {
+                } else if (topIntent.intent === "Cancel") {
                     await this.conversationState.clear(context);
                     await this.conversationState.saveChanges(context);
                     await context.sendActivity("Canceled the conversation State");
@@ -215,7 +215,7 @@ class BasicBot {
                 await this.conversationState.saveChanges(context);
                 result = await conn.getVehicles(selectQuery);
                 //await context.sendActivity(`Result : ${result}`);
-                if (topIntent.intent !== "CountOfCars") {
+                if (topIntent.intent == "SearchForCars" || topIntent.intent == "PreviousCars") {
                     //elimintaing the results from the previous query
                     for (var i = 0; i <= 4; i++) {
                         vehicleCard.body[0].columns[0].items[i + 1].text = "";
@@ -252,8 +252,12 @@ class BasicBot {
                             attachments: [CardFactory.adaptiveCard(vehicleCard)]
                         });
                     }
-                } else {
+                } else if (topIntent.intent == "CountOfCars") {
                     await context.sendActivity(JSON.stringify(result[0][0][""]));
+                } else if (topIntent.intent == "Greeting") {
+                    await context.sendActivity("Hi User, How can I help you?");
+                } else {
+                    await context.sendActivity("I didn't understand what you just said to me.");
                 }
 
                 // Since the LuisRecognizer was configured to include the raw results, get the `topScoringIntent` as specified by LUIS.

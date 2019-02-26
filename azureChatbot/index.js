@@ -113,14 +113,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 server.post('/api/messages', (req, res) => {
     // Route received a request to adapter for processing
     adapter.processActivity(req, res, async (turnContext) => {
-
-        if (turnContext._activity.channelData) {
-            console.log(turnContext._activity.channelData.param1);
-            await bot.onTurn(turnContext, turnContext._activity.channelData.param1);
-        }
-        else {
-            await bot.onTurn(turnContext, "locale not found yet");
-        }
+            await bot.onTurn(turnContext, req.body.locale);
     });
 });
 

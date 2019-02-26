@@ -14,11 +14,12 @@
   <style>
     html,
     body {
+      background-color: #1d0303;
       height: 100%
     }
 
     body {
-      margin: 10
+      margin: 0
     }
 
     #webchat {
@@ -43,6 +44,7 @@
       const { token } = await res.json();
 
       const styleSet = window.WebChat.createStyleSet({
+        backgroundColor: 'White',
         botAvatarImage: './bot2.jpg',
         botAvatarInitials: 'VW',
         userAvatarImage: './man4.jpg',

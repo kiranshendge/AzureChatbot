@@ -12,24 +12,41 @@
     -->
   <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
   <style>
+       .example {
+        float: left;
+        margin-right: 20px;
+        width: 300px;
+      }
     html,
     body {
-      background-color: #1d0303;
+      background-color: #eff5f5;
       height: 100%
     }
 
     body {
-      margin-left: 10
+      margin-left: 10;
     }
 
+    .example > h2 {
+        font-family: 'Segoe UI';
+      }
+
     #webchat {
+      border: 1px solid #333;
       height: 100%;
       width: 40%;
+      margin-left: 10cm;;
+
     }
   </style>
 </head>
 
 <body>
+    <section class="example">
+        <h2>Volkswagen Chat Bot</h2>
+        <p>
+        </p>
+      </section>
   <div id="webchat" role="main"></div>
   <script>
     (async function () {
@@ -40,6 +57,8 @@
           method: 'POST',
           headers: { "Authorization": "Bearer 776bhqI6tBc.tWoh0POEv9jUPfO_-dgYJi_7VEsJLdSYaLAzsn5suJ0" }
         });
+      //  https://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_rgba
+      //https://www.december.com/html/spec/colorrgbadec.html
       // const { token } = await res.json();
       const { token } = await res.json();
       //https://github.com/Microsoft/BotFramework-WebChat/blob/master/packages/component/src/Styles/defaultStyleSetOptions.js
@@ -49,14 +68,13 @@
         botAvatarInitials: 'VW',
         userAvatarImage: './man4.jpg',
         userAvatarInitials: 'WC',
-        bubbleBackground: 'rgba(0, 0, 255, .1)',
+        bubbleBackground:  'rgb(0,255,255,0.1)',
         bubbleFromUserBackground: 'rgba(0, 255, 0, .1)'
       });
 
       styleSet.textContent = {
         ...styleSet.textContent,
         fontFamily: '\'Comic Sans MS\', \'Arial\', sans-serif',
-        fontWeight: 'bold'
       };
 
       // console.log(token)
@@ -78,27 +96,6 @@
       var botContainer = document.getElementById('webchat');
 
       window.WebChat.renderWebChat({ directLine: dl, styleSet, webSpeechPonyfillFactory: window.WebChat.createBrowserWebSpeechPonyfillFactory() }, botContainer);
-
-      var activity = {
-        from: {
-          id: "User",
-          name: "userName"
-        },
-        name: 'startConversation',
-        type: 'event',
-        value: '',
-        channelData: {
-          "personId": "user",
-          "environment": window.location.host,
-          "param1": localeLanguage
-        }
-      };
-
-      dl.postActivity(activity).subscribe(function (id) {
-        if (console) {
-          console.log('"trigger requestWelcomeDialog" sent');
-        }
-      });
 
     })().catch(err => console.error(err));
   </script>

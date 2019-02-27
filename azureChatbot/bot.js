@@ -241,7 +241,7 @@ class BasicBot {
 
                     if (remainingCars > 0) {
                         await context.sendActivity({
-                            text: messages[locale].result1,
+                            text: eval('`' + messages[locale].result1 + '`'),
                             attachments: [CardFactory.adaptiveCard(vehicleCard)]
                         });
                     }
@@ -258,7 +258,7 @@ class BasicBot {
                     await this.conversationData.set(context, conversationData);
                     await this.conversationState.saveChanges(context);
                     result = await conn.getVehicles(selectQuery);
-                    
+
                     await context.sendActivity(JSON.stringify(result[0][0][""]));
                 } else if (topIntent.intent == "Greeting") {
                     // console.log(messages[locale].greeting);
@@ -276,7 +276,7 @@ class BasicBot {
                 //await context.sendActivity('Welcome to the LUIS Demo sample! Send me a message and I will try to predict your intent.');
             } else if (context.activity.type !== ActivityTypes.ConversationUpdate) {
                 // Respond to all other Activity types.
-                await context.sendActivity(messages[locale].activity);
+                await context.sendActivity(eval('`' + messages[locale].activity + '`'));
             }
         }
     }

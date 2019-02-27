@@ -252,6 +252,13 @@ class BasicBot {
                         });
                     }
                 } else if (topIntent.intent == "CountOfCars") {
+                    selectQuery = await query.createQuery(results, conversationData);
+                    console.log(selectQuery);
+                    console.log(conversationData.query);
+                    await this.conversationData.set(context, conversationData);
+                    await this.conversationState.saveChanges(context);
+                    result = await conn.getVehicles(selectQuery);
+                    
                     await context.sendActivity(JSON.stringify(result[0][0][""]));
                 } else if (topIntent.intent == "Greeting") {
                     // console.log(messages[locale].greeting);

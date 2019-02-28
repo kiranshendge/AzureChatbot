@@ -17,7 +17,7 @@ module.exports = {
         Object.keys(results.entities).forEach(function (prop) {
             var luisEntity = results.entities[prop];
 
-            if (prop != '$instance') {
+            if (prop != '$instance' && prop != 'entityValue' && prop != 'datetime') {
                 const checkEntity = obj => 'entityValue' in obj;
                 var isComposite = luisEntity.some(checkEntity);
                 if (luisEntity.length == 1) {
@@ -51,6 +51,7 @@ module.exports = {
             }
         });
         if (entityDetails != '') {
+            entityDetails = entityDetails.replace('( ','(').replace(' )',')').replace(' - ','-');
             entityDetails = entityDetails.substr(0, entityDetails.length - 1);
         }
 

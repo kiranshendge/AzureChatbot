@@ -18,8 +18,15 @@ module.exports = {
             var luisEntity = results.entities[prop];
 
             if (prop != '$instance' && prop != 'entityValue' && prop != 'datetime') {
-                const checkEntity = obj => 'entityValue' in obj;
-                var isComposite = luisEntity.some(checkEntity);
+                const checkEntity = obj => 'entityValue' in obj;                
+                var isEntityArray = luisEntity[0] instanceof Array;
+                var isEntityObject = luisEntity[0] instanceof Object;
+
+                var isComposite = false;
+                if(isEntityArray || isEntityObject)
+                {
+                     isComposite = luisEntity.some(checkEntity);
+                }
                 if (luisEntity.length == 1) {
                     if (isComposite) {
                         var pos = luisEntity.map(function (e) { return e.entityValue; });

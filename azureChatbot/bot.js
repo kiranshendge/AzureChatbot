@@ -54,6 +54,7 @@ const SHOW_FILTER = 'show_filter'
 const CAR_FILTER_PROMPT = 'car_filter_prompt'
 */
 var secondOption = false;
+global.locale = "en-US"
 
 
 
@@ -152,28 +153,44 @@ class BasicBot {
         this.userState = userState;
     }
     async promptForLockReason(step) {
-        await step.prompt(LOCK_PROMPT, 'What is the reason for the lock?');
+        if (global.locale === "de-DE") {
+            await step.prompt(LOCK_PROMPT, 'Was ist der Grund für die Sperre?');
+        } else {
+            await step.prompt(LOCK_PROMPT, 'What is the reason for the lock?');
+        }
     }
 
     async promptForProp(step) {
         const conversationData = await this.conversationData.get(step.context, {});
         conversationData.reason = step.result;
         await this.conversationData.set(step.context, conversationData);
-        return await step.prompt(LOCK_PROMPT, 'What properties the lock should use?');
+        if (global.locale === "de-DE") {
+            return await step.prompt(LOCK_PROMPT, 'Welche Eigenschaften sollte das Schloss verwenden?');
+        } else {
+            return await step.prompt(LOCK_PROMPT, 'What properties the lock should use?');
+        }
     }
 
     async promptForAssLine(step) {
         const conversationData = await this.conversationData.get(step.context, {});
         conversationData.prop = step.result;
         await this.conversationData.set(step.context, conversationData);
-        return await step.prompt(LOCK_PROMPT, 'What assembly line should be used?');
+        if (global.locale === "de-DE") {
+            return await step.prompt(LOCK_PROMPT, 'Welche Montagelinie soll verwendet werden?');
+        } else {
+            return await step.prompt(LOCK_PROMPT, 'What assembly line should be used?');
+        }
     }
 
     async confirmLock(step) {
         const conversationData = await this.conversationData.get(step.context, {});
         conversationData.line = step.result;
         await this.conversationData.set(step.context, conversationData);
-        return await step.prompt(LOCK_PROMPT, 'Should I activate the lock now?');
+        if (global.locale === "de-DE") {
+            return await step.prompt(LOCK_PROMPT, 'Soll ich jetzt die Sperre aktivieren?');
+        } else {
+            return await step.prompt(LOCK_PROMPT, 'Should I activate the lock now?');
+        }
     }
 
     async displayLockParameters(step) {
@@ -181,8 +198,15 @@ class BasicBot {
         conversationData.confirmation = step.result;
         await this.conversationData.set(step.context, conversationData);
         //console.log("details:",conversationData.lockValue.name, conversationData.lockValue.reason, conversationData.lockValue.model, conversationData.lockValue.emailId, conversationData.lockValue.line)
-        await step.context.sendActivity("Okay, the lock has been now sent for approval with these parameters:");
-        await step.context.sendActivity(`Reason: ${conversationData.reason} \n  Properties: ${conversationData.prop} \n Assembly Line: ${conversationData.line}`);
+        if ((conversationData.confirmation).toLowerCase() === 'yes' || (conversationData.confirmation).toLowerCase() === 'ja') {
+            if (global.locale === "de-DE") {
+                await step.context.sendActivity("Okay, die Sperre wurde nun zur Bestätigung mit diesen Parametern gesendet:");
+                await step.context.sendActivity(`Grund: ${conversationData.reason} \n  Eigenschaften: ${conversationData.prop} \n Fließband: ${conversationData.line}`);
+            } else {
+                await step.context.sendActivity("Okay, the lock has been now sent for approval with these parameters:");
+                await step.context.sendActivity(`Reason: ${conversationData.reason} \n  Properties: ${conversationData.prop} \n Assembly Line: ${conversationData.line}`);
+            }
+        }
         return await step.endDialog();
     }
 
@@ -209,8 +233,10 @@ class BasicBot {
      */
     async onTurn(context, locale) {
         let luisRecognizer;
-        if (locale === undefined || locale === '') {
-            locale = "en-US";
+        if (locale === "de-DE") {
+            global.locale = "de-DE";
+        } else {
+            global.locale = "en-US";
         }
 
         if ((context.activity.text || '').trim().toLowerCase() === 'go to second option') {
@@ -232,7 +258,7 @@ class BasicBot {
                     return;
                 }
                 //setting the luis recognizer
-                if (germanLanguageArray.includes(locale)) {
+                if (germanLanguageArray.includes(global.locale)) {
                     console.log("The luis recognizer to be set is German");
                     luisRecognizer = this.germanluisRecognizer;
                     console.log("the locale from browser is " + locale);
@@ -323,7 +349,8 @@ class BasicBot {
                     // console.log(messages[locale].greeting);
                     await context.sendActivity(messages[locale].greeting);
                     // console.log(messages[locale].greeting);
-                } else if ((context.activity.text).toLowerCase() === 'lock them') {
+                } else if ((context.activity.text).toLowerCase() === 'lock them' ||
+                    (context.activity.text).toLowerCase() === 'sperren sie') {
                     await dc.beginDialog(SHOW_FILTER);
                     await this.conversationState.saveChanges(context, false);
                 }

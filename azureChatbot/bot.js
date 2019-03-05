@@ -19,6 +19,8 @@ const { GreetingDialog } = require('./dialogs/greeting');
 var vehicleCard = require('./resources/vehicleResult.json');
 const germanLuisKeys = require('./resources/germanLuisKeys.json');
 
+const germanLanguageArray = ["de-DE", "de", "de-LI", "de-AT", "de-CH"]
+
 // Greeting Dialog ID
 const GREETING_DIALOG = 'greetingDialog';
 
@@ -150,7 +152,7 @@ class BasicBot {
         this.userState = userState;
     }
     async promptForLockReason(step) {
-     await step.prompt(LOCK_PROMPT, 'What is the reason for the lock?');
+        await step.prompt(LOCK_PROMPT, 'What is the reason for the lock?');
     }
 
     async promptForProp(step) {
@@ -222,19 +224,23 @@ class BasicBot {
             var setCountFlag = false;
             var selectQuery, result = '';
             if (context.activity.type === ActivityTypes.Message) {
-                const conversationData = await this.conversationData.get(context, { intent: '', query: '', properties:{}});
+                const conversationData = await this.conversationData.get(context, { intent: '', query: '', properties: {} });
                 const dc = await this.dialogs.createContext(context);
                 if (dc.activeDialog) {
-                 await dc.continueDialog();
-                 await this.conversationState.saveChanges(context, false);
-                 return;
+                    await dc.continueDialog();
+                    await this.conversationState.saveChanges(context, false);
+                    return;
                 }
                 //setting the luis recognizer
-                if (locale === "de-DE") {
+                if (germanLanguageArray.includes(locale)) {
                     console.log("The luis recognizer to be set is German");
                     luisRecognizer = this.germanluisRecognizer;
+                    console.log("the locale from browser is " + locale);
+                    locale = "de-DE";
                 }
                 else {
+                    console.log("the locale from browser is " + locale);
+                    locale = "en-US";
                     console.log("The luis recognizer to be set is English");
                     luisRecognizer = this.englishluisRecognizer;
                 }

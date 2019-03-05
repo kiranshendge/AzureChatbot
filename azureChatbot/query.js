@@ -90,7 +90,15 @@ module.exports = {
                     andQuery = andQuery + ' AND ';
             }
             sb.append(andQuery);
+
         }
+        else if (andQuery != '' && andQuery.endsWith('AND '))
+        {
+            andQuery = andQuery.substr(0,andQuery.length - 4)
+            sb.append(' WHERE ');
+            sb.append(andQuery);
+        }
+
         var selectQueryCount = sb.toString();
         //var selectQueryDetails = sb.toString().replace('count(*)', '*');
         conversationData.intent = results.luisResult.topScoringIntent.intent;

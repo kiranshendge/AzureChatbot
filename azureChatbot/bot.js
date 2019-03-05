@@ -43,6 +43,8 @@ const USER_LOCATION_ENTITIES = ['userLocation', 'userLocation_patternAny'];
 //dialog code
 const { ChoicePrompt, NumberPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
 const SHOW_CARS = 'show_cars'
+const SHOW_FILTER = 'show_filter';
+const LOCK_PROMPT = 'lock_prompt'
 
 /*
 For second option
@@ -133,11 +135,53 @@ class BasicBot {
             this.getpromptFilterValue.bind(this)
         ]));
         */
+        this.dialogs.add(new TextPrompt(LOCK_PROMPT));
+        this.dialogs.add(new WaterfallDialog(SHOW_FILTER, [
+            this.promptForLockReason.bind(this),
+            this.promptForProp.bind(this),
+            this.promptForAssLine.bind(this),
+            this.confirmLock.bind(this),
+            this.displayLockParameters.bind(this)
+        ]));
 
         this.conversationData = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
         // The state management objects for the conversation and user state.
         this.conversationState = conversationState;
         this.userState = userState;
+    }
+    async promptForLockReason(step) {
+     await step.prompt(LOCK_PROMPT, 'What is the reason for the lock?');
+    }
+
+    async promptForProp(step) {
+        const conversationData = await this.conversationData.get(step.context, {});
+        conversationData.reason = step.result;
+        await this.conversationData.set(step.context, conversationData);
+        return await step.prompt(LOCK_PROMPT, 'What properties the lock should use?');
+    }
+
+    async promptForAssLine(step) {
+        const conversationData = await this.conversationData.get(step.context, {});
+        conversationData.prop = step.result;
+        await this.conversationData.set(step.context, conversationData);
+        return await step.prompt(LOCK_PROMPT, 'What assembly line should be used?');
+    }
+
+    async confirmLock(step) {
+        const conversationData = await this.conversationData.get(step.context, {});
+        conversationData.line = step.result;
+        await this.conversationData.set(step.context, conversationData);
+        return await step.prompt(LOCK_PROMPT, 'Should I activate the lock now?');
+    }
+
+    async displayLockParameters(step) {
+        const conversationData = await this.conversationData.get(step.context, {});
+        conversationData.confirmation = step.result;
+        await this.conversationData.set(step.context, conversationData);
+        //console.log("details:",conversationData.lockValue.name, conversationData.lockValue.reason, conversationData.lockValue.model, conversationData.lockValue.emailId, conversationData.lockValue.line)
+        await step.context.sendActivity("Okay, the lock has been now sent for approval with these parameters:");
+        await step.context.sendActivity(`Reason: ${conversationData.reason} \n  Properties: ${conversationData.prop} \n Assembly Line: ${conversationData.line}`);
+        return await step.endDialog();
     }
 
     /*
@@ -178,8 +222,13 @@ class BasicBot {
             var setCountFlag = false;
             var selectQuery, result = '';
             if (context.activity.type === ActivityTypes.Message) {
-                const conversationData = await this.conversationData.get(context, { intent: '', query: '' });
-
+                const conversationData = await this.conversationData.get(context, { intent: '', query: '', properties:{}});
+                const dc = await this.dialogs.createContext(context);
+                if (dc.activeDialog) {
+                 await dc.continueDialog();
+                 await this.conversationState.saveChanges(context, false);
+                 return;
+                }
                 //setting the luis recognizer
                 if (locale === "de-DE") {
                     console.log("The luis recognizer to be set is German");
@@ -213,6 +262,10 @@ class BasicBot {
                     await this.conversationData.set(context, conversationData);
                     await this.conversationState.saveChanges(context);
                     result = await conn.getVehicles(selectQuery);
+                    conversationData.properties = result[0];
+                    await this.conversationData.set(context, conversationData);
+                    await this.conversationState.saveChanges(context);
+                    console.log("prop:", conversationData.properties);
                     //await context.sendActivity(`Result : ${result}`);
 
                     //elimintaing the results from the previous query
@@ -264,7 +317,11 @@ class BasicBot {
                     // console.log(messages[locale].greeting);
                     await context.sendActivity(messages[locale].greeting);
                     // console.log(messages[locale].greeting);
-                } else {
+                } else if ((context.activity.text).toLowerCase() === 'lock them') {
+                    await dc.beginDialog(SHOW_FILTER);
+                    await this.conversationState.saveChanges(context, false);
+                }
+                else {
                     await context.sendActivity(messages[locale].none);
                 }
 

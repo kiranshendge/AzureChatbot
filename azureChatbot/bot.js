@@ -250,6 +250,7 @@ class BasicBot {
             var setCountFlag = false;
             var selectQuery, result = '';
             if (context.activity.type === ActivityTypes.Message) {
+                context.sendActivity({ type: 'typing'});
                 const conversationData = await this.conversationData.get(context, { intent: '', query: '', properties: {} });
                 const dc = await this.dialogs.createContext(context);
                 if (dc.activeDialog) {

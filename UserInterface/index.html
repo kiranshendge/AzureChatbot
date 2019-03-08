@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <head>
-  <title>Web Chat: Avatar with images and initials</title>
+  <title>VW ChatBot</title>
   <!--
         https://stackoverflow.com/questions/54257379/pass-custom-parameters-from-webchat-control-to-bot-framework
     https://stackoverflow.com/questions/52498711/how-to-create-be-languages-bot-in-direct-line-channel  
@@ -13,41 +13,58 @@
     -->
   <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
   <style>
-       .example {
-        float: left;
-        margin-right: 20px;
-        width: 300px;
-      }
+    .example {
+      float: left;
+      margin-right: 20px;
+      width: 300px;
+    }
+
     html,
     body {
-      background-color: #eff5f5;
-      height: 100%
+      background-image: url("background_screen.jpg") ;
+
+      background-size: 100%;
+      background-color: #E3F7FD;
+      height: 100%;
+	  margin:0px;
+
     }
 
     body {
       margin-left: 10;
     }
 
-    .example > h2 {
-        font-family: 'Segoe UI';
-      }
+
+    h2 {
+
+      padding-left: 0.2ch;
+      font-family: 'verdana';
+    }
+
 
     #webchat {
-      border: 1px solid #333;
-      height: 100%;
+      border: 1px solid rgba(125, 125, 125);
+      height: 90%;
       width: 40%;
-      margin-left: 10cm;;
+      margin-left: 10cm;
+      ;
 
     }
   </style>
 </head>
 
 <body>
-    <section class="example">
-        <h2>Volkswagen Speech to Text Chatbot</h2>
-        <p>
-        </p>
-      </section>
+  <section class="example">
+  <p>
+    </p>
+    <!-- <div style="background-color: honeydew;"> -->
+    <h2 >Volkswagen </h2>
+    <h2> Speech to Text Chatbot</h2>
+    <!-- </div>  -->
+    <p>
+    </p>
+  </section>
+
   <div id="webchat" role="main"></div>
   <script>
     (async function () {
@@ -69,7 +86,7 @@
         botAvatarInitials: 'VW',
         userAvatarImage: './man4.jpg',
         userAvatarInitials: 'WC',
-        bubbleBackground:  'rgb(192,192,192,0.2)',
+        bubbleBackground: 'rgb(192,192,192,0.2)',
         bubbleFromUserBackground: 'rgba(0, 255, 0, .1)'
       });
 

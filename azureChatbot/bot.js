@@ -233,7 +233,7 @@ class BasicBot {
      */
     async onTurn(context, locale) {
         let luisRecognizer;
-        if (locale === "de-DE") {
+        if (germanLanguageArray.includes(locale)) {
             global.locale = "de-DE";
         } else {
             global.locale = "en-US";

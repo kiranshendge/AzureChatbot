@@ -218,7 +218,6 @@ class BasicBot {
     }
     async promptForFilter(step) {
         await step.prompt(CAR_FILTER_PROMPT, 'Would you like to further filter the result', ['Yes', 'No']);
-
     }
     */
 

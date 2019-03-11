@@ -2,7 +2,7 @@
     {
         user: 'sqladmin', 
         password: 'pass@1234', 
-        server: 'demokiran.database.windows.net',
+        server: 'demokiran1234.database.windows.net',
         database: 'vehicles',
         options:
         {

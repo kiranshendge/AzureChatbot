@@ -187,7 +187,7 @@ class BasicBot {
         conversationData.line = step.result;
         await this.conversationData.set(step.context, conversationData);
         if (global.locale === "de-DE") {
-            return await step.prompt(LOCK_PROMPT, 'Soll ich jetzt die Sperre aktivieren?');
+            return await step.prompt(LOCK_PROMPT, 'Soll die Sperre jetzt aktiviert werden?');
         } else {
             return await step.prompt(LOCK_PROMPT, 'Should I activate the lock now?');
         }
@@ -201,7 +201,7 @@ class BasicBot {
         if ((conversationData.confirmation).toLowerCase() === 'yes' || (conversationData.confirmation).toLowerCase() === 'ja') {
             if (global.locale === "de-DE") {
                 await step.context.sendActivity("Okay, die Sperre wurde nun zur Bestätigung mit diesen Parametern gesendet:");
-                await step.context.sendActivity(`Grund: ${conversationData.reason} \n  Eigenschaften: ${conversationData.prop} \n Fließband: ${conversationData.line}`);
+                await step.context.sendActivity(`Grund: ${conversationData.reason} \n  Eigenschaften: ${conversationData.prop} \n Montagelinie: ${conversationData.line}`);
             } else {
                 await step.context.sendActivity("Okay, the lock has been now sent for approval with these parameters:");
                 await step.context.sendActivity(`Reason: ${conversationData.reason} \n  Properties: ${conversationData.prop} \n Assembly Line: ${conversationData.line}`);

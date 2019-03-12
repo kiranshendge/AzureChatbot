@@ -189,7 +189,7 @@ class BasicBot {
         conversationData.line = step.result;
         await this.conversationData.set(step.context, conversationData);
         if (global.locale === "de-DE") {
-            return await step.prompt(CHOICE_PROMPT, 'Soll ich jetzt die Sperre aktivieren?',['Ja', 'Nein']);
+            return await step.prompt(CHOICE_PROMPT, 'Soll die Sperre jetzt aktiviert werden?',['Ja', 'Nein']);
         } else {
             return await step.prompt(CHOICE_PROMPT, 'Should I activate the lock now?',['Yes', 'No']);
         }

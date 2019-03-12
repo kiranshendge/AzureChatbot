@@ -1,5 +1,5 @@
 {
-    "applicationId": "a8d9dd4a-69e9-477c-bbdf-d3b5988a9e9d",
-    "endpoint": "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/a8d9dd4a-69e9-477c-bbdf-d3b5988a9e9d?verbose=true&timezoneOffset=-360&subscription-key=b1a077f0b326427897f32f06bd05d83a&q=",
-    "authoringKey": "b1a077f0b326427897f32f06bd05d83a"
+    "applicationId": "4597729a-537f-4270-9d03-266d18504082",
+    "endpoint": "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/4597729a-537f-4270-9d03-266d18504082?verbose=true&timezoneOffset=-360&subscription-key=bc07f17001014fb5b00f813f9b9fa570&q=",
+    "authoringKey": "bc07f17001014fb5b00f813f9b9fa570"
 }

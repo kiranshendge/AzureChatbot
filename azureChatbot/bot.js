@@ -167,7 +167,7 @@ class BasicBot {
         conversationData.reason = step.result;
         await this.conversationData.set(step.context, conversationData);
         if (global.locale === "de-DE") {
-            return await step.prompt(LOCK_PROMPT, 'Welche Eigenschaften sollte das Schloss verwenden?');
+            return await step.prompt(LOCK_PROMPT, 'Welche Eigenschaften sollen zum Sperren verwendet werden?');
         } else {
             return await step.prompt(LOCK_PROMPT, 'What properties the lock should use?');
         }

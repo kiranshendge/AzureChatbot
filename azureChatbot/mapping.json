@@ -1,6 +1,6 @@
 {
     "knrEntity": "knr",
-    "aggregate": "aggregate",
+    "aggregateEntity": "aggregate",
     "numberOfSeats": "seats",
     "creationDateEntity": "creation_date",
     "orderEntity": "order_status",
@@ -16,7 +16,6 @@
     "gearType": "gear_type",
     "wholesaleDealerCountry": "gro_hnd_land",
     "commissionNumber": "komm_nr",
-    "": "countries",
     "pinEntity": "pin",
     "sightGlassWeek": "schaugl_wo",
     "tmEntity": "tm",

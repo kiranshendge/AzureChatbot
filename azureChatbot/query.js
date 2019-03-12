@@ -17,7 +17,7 @@ module.exports = {
         Object.keys(results.entities).forEach(function (prop) {
             var luisEntity = results.entities[prop];
 
-            if (prop != '$instance' && prop != 'entityValue' && prop != 'datetime') {
+            if (prop != '$instance' && prop != 'entityValue' && prop != 'datetime' && prop != 'datetimeV2') {
                 const checkEntity = obj => 'entityValue' in obj;                
                 var isEntityArray = luisEntity[0] instanceof Array;
                 var isEntityObject = luisEntity[0] instanceof Object;

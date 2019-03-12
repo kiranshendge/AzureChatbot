@@ -46,7 +46,8 @@ const USER_LOCATION_ENTITIES = ['userLocation', 'userLocation_patternAny'];
 const { ChoicePrompt, NumberPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
 const SHOW_CARS = 'show_cars'
 const SHOW_FILTER = 'show_filter';
-const LOCK_PROMPT = 'lock_prompt'
+const LOCK_PROMPT = 'lock_prompt';
+const CHOICE_PROMPT = 'choice_prompt';
 
 /*
 For second option
@@ -139,6 +140,7 @@ class BasicBot {
         ]));
         */
         this.dialogs.add(new TextPrompt(LOCK_PROMPT));
+        this.dialogs.add(new ChoicePrompt(CHOICE_PROMPT));
         this.dialogs.add(new WaterfallDialog(SHOW_FILTER, [
             this.promptForLockReason.bind(this),
             this.promptForProp.bind(this),
@@ -187,15 +189,15 @@ class BasicBot {
         conversationData.line = step.result;
         await this.conversationData.set(step.context, conversationData);
         if (global.locale === "de-DE") {
-            return await step.prompt(LOCK_PROMPT, 'Soll die Sperre jetzt aktiviert werden?');
+            return await step.prompt(CHOICE_PROMPT, 'Soll ich jetzt die Sperre aktivieren?',['Ja', 'Nein']);
         } else {
-            return await step.prompt(LOCK_PROMPT, 'Should I activate the lock now?');
+            return await step.prompt(CHOICE_PROMPT, 'Should I activate the lock now?',['Yes', 'No']);
         }
     }
 
     async displayLockParameters(step) {
         const conversationData = await this.conversationData.get(step.context, {});
-        conversationData.confirmation = step.result;
+        conversationData.confirmation = step.result.value;
         await this.conversationData.set(step.context, conversationData);
         //console.log("details:",conversationData.lockValue.name, conversationData.lockValue.reason, conversationData.lockValue.model, conversationData.lockValue.emailId, conversationData.lockValue.line)
         if ((conversationData.confirmation).toLowerCase() === 'yes' || (conversationData.confirmation).toLowerCase() === 'ja') {

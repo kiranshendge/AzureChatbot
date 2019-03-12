@@ -13,21 +13,43 @@
     -->
   <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
   <style>
+    .white {
+      color: #E3F7FD;
+    }
+
     .example {
       float: left;
       margin-right: 20px;
-	  margin-left: 40px;
+      margin-left: 40px;
       width: 300px;
+    }
+
+    body:after {
+
+      content: "";
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: hsla(180, 0%, 50%, 0.25);
+      pointer-events: none;
     }
 
     html,
     body {
-      background-image: url("background_screen.jpg") ;
+      /* filter: gray;
+
+      -webkit-filter: grayscale(1);
+    
+      filter: grayscale(0.5); */
+ 
+      background-image: url("VW-city.jpg");
 
       background-size: 100%;
       background-color: #E3F7FD;
       height: 100%;
-	  margin:0px;
+      margin: 0px;
 
     }
 
@@ -40,11 +62,12 @@
 
       padding-left: 0.2ch;
       font-family: 'verdana';
-	  color:#1f2f57;
+      color: #1f2f57;
     }
 
 
     #webchat {
+      padding-top: 5px;
       border: 1px solid rgba(125, 125, 125);
       height: 90%;
       width: 40%;
@@ -57,11 +80,11 @@
 
 <body>
   <section class="example">
-  <p>
+    <p>
     </p>
     <!-- <div style="background-color: honeydew;"> -->
-    <h2 >Volkswagen </h2>
-    <h2> Speech to Text Chatbot</h2>
+    <h2 class="white">Volkswagen </h2>
+    <h2 class="white"> Speech to Text Chatbot</h2>
     <!-- </div>  -->
     <p>
     </p>

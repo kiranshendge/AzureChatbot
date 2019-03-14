@@ -1,6 +1,6 @@
 # AzureChatbot
 
-File Structure:
+Folder Description:
 
 DB Scripts - Contains database DDL and DML SQL scripts
 

@@ -1,0 +1,738 @@
+{
+  "luis_schema_version": "3.2.0",
+  "versionId": "0.1",
+  "name": "luisdemokiran-bbca",
+  "desc": "A BotBuilder generated bot",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "Cancel"
+    },
+    {
+      "name": "CountOfCars"
+    },
+    {
+      "name": "Greeting"
+    },
+    {
+      "name": "Help"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "PreviousCars"
+    },
+    {
+      "name": "SearchForCars"
+    }
+  ],
+  "entities": [
+    {
+      "name": "userName",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [
+    {
+      "name": "color",
+      "subLists": [
+        {
+          "canonicalForm": "H1H1",
+          "list": [
+            "h1h1",
+            "h1h1",
+            "h1h1",
+            "h1h1"
+          ]
+        },
+        {
+          "canonicalForm": "T9T9",
+          "list": []
+        },
+        {
+          "canonicalForm": "0C0C",
+          "list": [
+            "0c0c"
+          ]
+        },
+        {
+          "canonicalForm": "A2A2",
+          "list": [
+            "a2a2",
+            "a2a2",
+            "a2a2",
+            "a2a2",
+            "a2a2"
+          ]
+        },
+        {
+          "canonicalForm": "2Y2Y",
+          "list": []
+        },
+        {
+          "canonicalForm": "L5L5",
+          "list": []
+        },
+        {
+          "canonicalForm": "red",
+          "list": []
+        },
+        {
+          "canonicalForm": "black",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "gearType",
+      "subLists": [
+        {
+          "canonicalForm": "RJN",
+          "list": [
+            "rjn"
+          ]
+        },
+        {
+          "canonicalForm": "SCE",
+          "list": [
+            "sce"
+          ]
+        },
+        {
+          "canonicalForm": "SLE",
+          "list": [
+            "sle"
+          ]
+        },
+        {
+          "canonicalForm": "SLF",
+          "list": [
+            "slf"
+          ]
+        },
+        {
+          "canonicalForm": "SQN",
+          "list": [
+            "sqn"
+          ]
+        },
+        {
+          "canonicalForm": "SRJ",
+          "list": [
+            "srj"
+          ]
+        },
+        {
+          "canonicalForm": "SRK",
+          "list": [
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk"
+          ]
+        },
+        {
+          "canonicalForm": "SVC",
+          "list": [
+            "svc"
+          ]
+        },
+        {
+          "canonicalForm": "SVL",
+          "list": [
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl"
+          ]
+        },
+        {
+          "canonicalForm": "SWB",
+          "list": [
+            "swb"
+          ]
+        },
+        {
+          "canonicalForm": "TBR",
+          "list": [
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr"
+          ]
+        },
+        {
+          "canonicalForm": "TXD",
+          "list": [
+            "txd"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "numberOfSeats",
+      "subLists": [
+        {
+          "canonicalForm": "2",
+          "list": []
+        },
+        {
+          "canonicalForm": "4",
+          "list": []
+        },
+        {
+          "canonicalForm": "5",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "roofColor",
+      "subLists": [
+        {
+          "canonicalForm": "H1",
+          "list": []
+        },
+        {
+          "canonicalForm": "T9",
+          "list": [
+            "t9",
+            "t9",
+            "t9"
+          ]
+        },
+        {
+          "canonicalForm": "0C",
+          "list": [
+            "0c",
+            "0c"
+          ]
+        },
+        {
+          "canonicalForm": "A2",
+          "list": [
+            "a2"
+          ]
+        },
+        {
+          "canonicalForm": "2Y",
+          "list": []
+        },
+        {
+          "canonicalForm": "L5",
+          "list": []
+        },
+        {
+          "canonicalForm": "0E",
+          "list": []
+        },
+        {
+          "canonicalForm": "white",
+          "list": []
+        },
+        {
+          "canonicalForm": "blue",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "vehicleSeries",
+      "subLists": [
+        {
+          "canonicalForm": "47",
+          "list": []
+        },
+        {
+          "canonicalForm": "4A",
+          "list": []
+        },
+        {
+          "canonicalForm": "4G",
+          "list": []
+        },
+        {
+          "canonicalForm": "4K",
+          "list": []
+        },
+        {
+          "canonicalForm": "4N",
+          "list": []
+        },
+        {
+          "canonicalForm": "4S",
+          "list": []
+        },
+        {
+          "canonicalForm": "4T",
+          "list": []
+        },
+        {
+          "canonicalForm": "8W",
+          "list": []
+        },
+        {
+          "canonicalForm": "F6",
+          "list": []
+        },
+        {
+          "canonicalForm": "ZL",
+          "list": []
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [],
+  "model_features": [
+    {
+      "name": "color",
+      "mode": true,
+      "words": "h1h1,t9t9,0c0c,a2a2,2y2y,l5l5",
+      "activated": true
+    },
+    {
+      "name": "roofcolor",
+      "mode": true,
+      "words": "h1,t9,0c,a2,2y,l5",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "abort",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "are you busy?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "are you old?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can i have count of a2a2 cars with t9 roof tbr gearbox and 8w model",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "can i see list of these cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "can i view those cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "can we get h1h1 car with srk gearbox t9 roofcolor 5 seats and f6 model",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "can we get h1h1 car with svl gearbox h1 roof 8w series and 5 seats",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "can we have list of a2a2 cars with srk gearbox a2 roof 4 seats and 4g model",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "can you fly?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can you help me",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "cook me something",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "do you play games?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "don't do it",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "don't do that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "dont you ever sleep?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "exit",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "getting tired of you",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "gnocchi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "good evening",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "good morning",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "have you any dreams?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hello david, what can i do for you?",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "userName",
+          "startPos": 6,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help me",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help please",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "her cat has no teeth",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hey there",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hi dave, it's nice to meet you. is there anything i can help you with today?",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "userName",
+          "startPos": 3,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "hi there, it's patrick",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "userName",
+          "startPos": 15,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "hiya",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how are you",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how are you?",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how many cars are of 8w series",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how many cars have tbr gearbox with 4g series and 5 seats",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how many of them are red cars",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how many of them have 4 seats",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how many of these are h1h1 in color with 8w model",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how many of these have 5 seats and svl gearbox",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how many red cars",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how old are you?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i am tired of you",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i would like to cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "i would like to stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "i'd rather be riding my bike",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "please cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "please stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "quit",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "show all a2a2 cars with tbr gearbox 0c roofcolor 4 seats and 4g model",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "show me list of all cars",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "show me list of cars with color h1h1",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "show me list of h1h1 cars",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "show me list of red cars with svl gearbox white roofcolor 5 seats and 8w model",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "show me these cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "show them to me",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "show these cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "spaghetti",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "tell me the count of h1h1 cars with 0c roofcolor and 2 seats",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "thanks sam. how can i help you?",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "userName",
+          "startPos": 7,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "what can you help me with",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what do i do now",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what is stock of black cars with svl gearbox 2 seats 4a series and blue roofcolor",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "what is your name",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "what's your age?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what's your name",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "who is your boss?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "world wide pants",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "yo",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "you are boring",
+      "intent": "None",
+      "entities": []
+    }
+  ],
+  "settings": []
+}

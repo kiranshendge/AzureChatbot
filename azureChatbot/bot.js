@@ -323,7 +323,7 @@ class BasicBot {
                     for (var i = 0; i <= y; i++) {
                         vehicleCard.body[0].columns[0].items[i + 1].text = carList[i].vehicle_series;
                         vehicleCard.body[0].columns[1].items[i + 1].text = carList[i].color;
-                        vehicleCard.body[0].columns[2].items[i + 1].text = carList[i].seats.toString();
+                        vehicleCard.body[0].columns[2].items[i + 1].text = (carList[i].seats===null)?'':carList[i].seats.toString();
                     }
 
                     if (remainingCars > 0) {

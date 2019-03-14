@@ -7,9 +7,9 @@ CREATE TABLE vehicles (
 	seats INT,
 	creation_date DATE,
 	order_status varchar(10),
-	order_version INT,
-	order_plant INT,
-	foreign_dealer INT,
+	order_version VARCHAR(10),
+	order_plant VARCHAR(10),
+	foreign_dealer VARCHAR(10),
 	vehicle_series VARCHAR(10),
 	vehicle_status VARCHAR(20),
 	color VARCHAR(10),
@@ -21,9 +21,9 @@ CREATE TABLE vehicles (
 	komm_nr VARCHAR(10),
 	countries VARCHAR(50),
 	pin VARCHAR(50),
-	schaugl_wo INT,
+	schaugl_wo VARCHAR(10),
 	tm VARCHAR(10),
-	target_station INT,
+	target_station VARCHAR(10),
 	body_status VARCHAR(10)
 );
 

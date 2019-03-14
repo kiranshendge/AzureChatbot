@@ -16,6 +16,7 @@ module.exports = {
         var entityDetails = '';
         Object.keys(results.entities).forEach(function (prop) {
             var luisEntity = results.entities[prop];
+            var pattern = /([0-9]{1,2})[-|\/|.]{1}([0-9]{1,2})[-|\/|.]{1}([0-9]{2,4})/;
 
             if (prop != '$instance' && prop != 'entityValue' && prop != 'datetime' && prop != 'datetimeV2') {
                 const checkEntity = obj => 'entityValue' in obj;                
@@ -37,6 +38,10 @@ module.exports = {
                         if (luisEntity[0]['datetime'] != null) {
                             entityDetails = entityDetails + prop + '-' + luisEntity[0]['datetime'][0]['timex'][0] + ',';
                         }
+                        else if (luisEntity[0]['dateRegex'] != null) {
+                            var dt = new Date(luisEntity[0]['dateRegex'][0].replace(pattern,'$3-$2-$1'));
+                            entityDetails = entityDetails + prop + '-' + dt.toISOString().slice(0,10)  + ',';
+                        }
                         else {
                             entityDetails = entityDetails + prop + '-' + luisEntity[0] + ',';
                         }
@@ -50,6 +55,10 @@ module.exports = {
                     }
                     if (luisEntity[0]['datetime'] != null) {
                         entityDetails = entityDetails + prop + '-' + luisEntity[0]['datetime'][0]['timex'][0] + ',';
+                    }
+                    else if (luisEntity[0]['dateRegex'] != null) {
+                        var dt = new Date(luisEntity[0]['dateRegex'][0].replace(pattern,'$3-$2-$1'));
+                        entityDetails = entityDetails + prop + '-' + dt.toISOString().slice(0,10)  + ',';
                     }
                     else {
                         entityDetails = entityDetails + prop + '-' + luisEntity[0] + ',';

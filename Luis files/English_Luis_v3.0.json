@@ -1,0 +1,3578 @@
+{
+  "luis_schema_version": "3.2.0",
+  "versionId": "3.0",
+  "name": "VWChatBotAzure-863c",
+  "desc": "A BotBuilder generated bot",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "Cancel"
+    },
+    {
+      "name": "CountOfCars"
+    },
+    {
+      "name": "Greeting"
+    },
+    {
+      "name": "Help"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "PreviousCars"
+    },
+    {
+      "name": "SearchForCars"
+    }
+  ],
+  "entities": [
+    {
+      "name": "aggregate",
+      "roles": []
+    },
+    {
+      "name": "bodyStatus",
+      "roles": []
+    },
+    {
+      "name": "commissionNumber",
+      "roles": []
+    },
+    {
+      "name": "creationDate",
+      "roles": []
+    },
+    {
+      "name": "entityValue",
+      "roles": []
+    },
+    {
+      "name": "externalColor",
+      "roles": []
+    },
+    {
+      "name": "foreignDealer",
+      "roles": []
+    },
+    {
+      "name": "internalColor",
+      "roles": []
+    },
+    {
+      "name": "KNR",
+      "roles": []
+    },
+    {
+      "name": "orderPlant",
+      "roles": []
+    },
+    {
+      "name": "orderStatus",
+      "roles": []
+    },
+    {
+      "name": "orderVersion",
+      "roles": []
+    },
+    {
+      "name": "PIN",
+      "roles": []
+    },
+    {
+      "name": "roofColor",
+      "roles": []
+    },
+    {
+      "name": "targetStation",
+      "roles": []
+    },
+    {
+      "name": "TM",
+      "roles": []
+    },
+    {
+      "name": "UserName",
+      "roles": []
+    },
+    {
+      "name": "vehicleSeries",
+      "roles": []
+    },
+    {
+      "name": "vehicleStatus",
+      "roles": []
+    }
+  ],
+  "composites": [
+    {
+      "name": "aggregateEntity",
+      "children": [
+        "aggregate",
+        "entityValue"
+      ],
+      "roles": []
+    },
+    {
+      "name": "bodyEntity",
+      "children": [
+        "entityValue",
+        "bodyStatus"
+      ],
+      "roles": []
+    },
+    {
+      "name": "creationDateEntity",
+      "children": [
+        "creationDate",
+        "datetimeV2"
+      ],
+      "roles": []
+    },
+    {
+      "name": "externalColorEntity",
+      "children": [
+        "entityValue",
+        "externalColor"
+      ],
+      "roles": []
+    },
+    {
+      "name": "internalColorEntity",
+      "children": [
+        "entityValue",
+        "internalColor"
+      ],
+      "roles": []
+    },
+    {
+      "name": "knrEntity",
+      "children": [
+        "entityValue",
+        "KNR"
+      ],
+      "roles": []
+    },
+    {
+      "name": "orderEntity",
+      "children": [
+        "entityValue",
+        "orderStatus"
+      ],
+      "roles": []
+    },
+    {
+      "name": "orderVersionEntity",
+      "children": [
+        "entityValue",
+        "orderVersion"
+      ],
+      "roles": []
+    },
+    {
+      "name": "pinEntity",
+      "children": [
+        "entityValue",
+        "PIN"
+      ],
+      "roles": []
+    },
+    {
+      "name": "roofEntity",
+      "children": [
+        "entityValue",
+        "roofColor"
+      ],
+      "roles": []
+    },
+    {
+      "name": "tmEntity",
+      "children": [
+        "entityValue",
+        "TM"
+      ],
+      "roles": []
+    },
+    {
+      "name": "vehicleEntity",
+      "children": [
+        "entityValue",
+        "vehicleStatus"
+      ],
+      "roles": []
+    },
+    {
+      "name": "vehicleSeriesEntity",
+      "children": [
+        "entityValue",
+        "vehicleSeries"
+      ],
+      "roles": []
+    }
+  ],
+  "closedLists": [
+    {
+      "name": "color",
+      "subLists": [
+        {
+          "canonicalForm": "H1H1",
+          "list": [
+            "h1h1",
+            "h1h1",
+            "h1h1",
+            "h1h1"
+          ]
+        },
+        {
+          "canonicalForm": "T9T9",
+          "list": []
+        },
+        {
+          "canonicalForm": "0C0C",
+          "list": [
+            "0c0c"
+          ]
+        },
+        {
+          "canonicalForm": "A2A2",
+          "list": [
+            "a2a2",
+            "a2a2",
+            "a2a2",
+            "a2a2",
+            "a2a2"
+          ]
+        },
+        {
+          "canonicalForm": "2Y2Y",
+          "list": []
+        },
+        {
+          "canonicalForm": "L5L5",
+          "list": []
+        },
+        {
+          "canonicalForm": "red",
+          "list": []
+        },
+        {
+          "canonicalForm": "black",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "gearType",
+      "subLists": [
+        {
+          "canonicalForm": "RJN",
+          "list": [
+            "rjn"
+          ]
+        },
+        {
+          "canonicalForm": "SCE",
+          "list": [
+            "sce"
+          ]
+        },
+        {
+          "canonicalForm": "SLE",
+          "list": [
+            "sle"
+          ]
+        },
+        {
+          "canonicalForm": "SLF",
+          "list": [
+            "slf"
+          ]
+        },
+        {
+          "canonicalForm": "SQN",
+          "list": [
+            "sqn"
+          ]
+        },
+        {
+          "canonicalForm": "SRJ",
+          "list": [
+            "srj"
+          ]
+        },
+        {
+          "canonicalForm": "SRK",
+          "list": [
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk",
+            "srk"
+          ]
+        },
+        {
+          "canonicalForm": "SVC",
+          "list": [
+            "svc"
+          ]
+        },
+        {
+          "canonicalForm": "SVL",
+          "list": [
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl",
+            "svl"
+          ]
+        },
+        {
+          "canonicalForm": "SWB",
+          "list": [
+            "swb"
+          ]
+        },
+        {
+          "canonicalForm": "TBR",
+          "list": [
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr",
+            "tbr"
+          ]
+        },
+        {
+          "canonicalForm": "TXD",
+          "list": [
+            "txd"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "numberOfSeats",
+      "subLists": [
+        {
+          "canonicalForm": "2",
+          "list": []
+        },
+        {
+          "canonicalForm": "4",
+          "list": []
+        },
+        {
+          "canonicalForm": "5",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "sightGlassWeek",
+      "subLists": [
+        {
+          "canonicalForm": "201830",
+          "list": []
+        },
+        {
+          "canonicalForm": "201835",
+          "list": []
+        },
+        {
+          "canonicalForm": "201836",
+          "list": []
+        },
+        {
+          "canonicalForm": "201811",
+          "list": []
+        },
+        {
+          "canonicalForm": "201804",
+          "list": []
+        },
+        {
+          "canonicalForm": "201838",
+          "list": []
+        },
+        {
+          "canonicalForm": "201839",
+          "list": []
+        },
+        {
+          "canonicalForm": "201837",
+          "list": []
+        },
+        {
+          "canonicalForm": "201826",
+          "list": []
+        },
+        {
+          "canonicalForm": "201829",
+          "list": []
+        },
+        {
+          "canonicalForm": "201807",
+          "list": []
+        },
+        {
+          "canonicalForm": "201817",
+          "list": []
+        },
+        {
+          "canonicalForm": "201825",
+          "list": []
+        },
+        {
+          "canonicalForm": "201827",
+          "list": []
+        },
+        {
+          "canonicalForm": "201828",
+          "list": []
+        },
+        {
+          "canonicalForm": "201831",
+          "list": []
+        },
+        {
+          "canonicalForm": "201840",
+          "list": []
+        },
+        {
+          "canonicalForm": "201842",
+          "list": []
+        },
+        {
+          "canonicalForm": "201843",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "wholesaleDealerCountry",
+      "subLists": [
+        {
+          "canonicalForm": "UV",
+          "list": []
+        },
+        {
+          "canonicalForm": "UH",
+          "list": []
+        },
+        {
+          "canonicalForm": "UQ",
+          "list": []
+        },
+        {
+          "canonicalForm": "KN",
+          "list": []
+        },
+        {
+          "canonicalForm": "BU",
+          "list": []
+        },
+        {
+          "canonicalForm": "UA",
+          "list": []
+        },
+        {
+          "canonicalForm": "EG",
+          "list": []
+        },
+        {
+          "canonicalForm": "LD",
+          "list": []
+        },
+        {
+          "canonicalForm": "181",
+          "list": []
+        },
+        {
+          "canonicalForm": "FR",
+          "list": []
+        },
+        {
+          "canonicalForm": "SN",
+          "list": []
+        },
+        {
+          "canonicalForm": "JR",
+          "list": []
+        },
+        {
+          "canonicalForm": "PN",
+          "list": []
+        },
+        {
+          "canonicalForm": "SW",
+          "list": []
+        },
+        {
+          "canonicalForm": "HO",
+          "list": []
+        },
+        {
+          "canonicalForm": "EN",
+          "list": []
+        },
+        {
+          "canonicalForm": "YH",
+          "list": []
+        },
+        {
+          "canonicalForm": "JV",
+          "list": []
+        },
+        {
+          "canonicalForm": "188",
+          "list": []
+        },
+        {
+          "canonicalForm": "PO",
+          "list": []
+        },
+        {
+          "canonicalForm": "HR",
+          "list": []
+        },
+        {
+          "canonicalForm": "953",
+          "list": []
+        },
+        {
+          "canonicalForm": "YK",
+          "list": []
+        },
+        {
+          "canonicalForm": "SD",
+          "list": []
+        },
+        {
+          "canonicalForm": "BE",
+          "list": []
+        },
+        {
+          "canonicalForm": "YU",
+          "list": []
+        },
+        {
+          "canonicalForm": "187",
+          "list": []
+        },
+        {
+          "canonicalForm": "190",
+          "list": []
+        },
+        {
+          "canonicalForm": "VA",
+          "list": []
+        },
+        {
+          "canonicalForm": "KY",
+          "list": []
+        },
+        {
+          "canonicalForm": "JX",
+          "list": []
+        },
+        {
+          "canonicalForm": "182",
+          "list": []
+        },
+        {
+          "canonicalForm": "LF",
+          "list": []
+        },
+        {
+          "canonicalForm": "LC",
+          "list": []
+        },
+        {
+          "canonicalForm": "DT",
+          "list": []
+        },
+        {
+          "canonicalForm": "BH",
+          "list": []
+        },
+        {
+          "canonicalForm": "JY",
+          "list": []
+        },
+        {
+          "canonicalForm": "926",
+          "list": []
+        },
+        {
+          "canonicalForm": "QD",
+          "list": []
+        },
+        {
+          "canonicalForm": "VF",
+          "list": []
+        },
+        {
+          "canonicalForm": "JJ",
+          "list": []
+        },
+        {
+          "canonicalForm": "JB",
+          "list": []
+        },
+        {
+          "canonicalForm": "GG",
+          "list": []
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "datetimeV2",
+      "roles": []
+    }
+  ],
+  "model_features": [
+    {
+      "name": "orderStatus",
+      "mode": true,
+      "words": "orderstatus,order status",
+      "activated": true
+    },
+    {
+      "name": "bodyStatus",
+      "mode": true,
+      "words": "bodystatus,body status",
+      "activated": true
+    },
+    {
+      "name": "externalColor",
+      "mode": true,
+      "words": "externalcolor,external color",
+      "activated": true
+    },
+    {
+      "name": "roofColor",
+      "mode": true,
+      "words": "roofcolor,roof color,roof",
+      "activated": true
+    },
+    {
+      "name": "internalColor",
+      "mode": true,
+      "words": "internal color,internalcolor",
+      "activated": true
+    },
+    {
+      "name": "vehicleSeries",
+      "mode": true,
+      "words": "vehicleseries,vehicle series,model,series",
+      "activated": true
+    },
+    {
+      "name": "vehicleStatus",
+      "mode": true,
+      "words": "vehiclestatus,vehicle status",
+      "activated": true
+    },
+    {
+      "name": "TM",
+      "mode": true,
+      "words": "tm",
+      "activated": true
+    },
+    {
+      "name": "creationDate",
+      "mode": true,
+      "words": "creationdate,creation date,created",
+      "activated": true
+    },
+    {
+      "name": "aggregate",
+      "mode": true,
+      "words": "aggregate",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "abort",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "am stuck",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "are you busy?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "are you old?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can i see list of these cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "can i see more details",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "can i see these",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "can i view those cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "can we get all cars",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "can we get car with 0c roof 2y internalcolor externalcolor a2 and tm 4t",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 20,
+          "endPos": 21
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 20,
+          "endPos": 26
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 23,
+          "endPos": 26
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 28,
+          "endPos": 29
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 28,
+          "endPos": 43
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 31,
+          "endPos": 43
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 45,
+          "endPos": 57
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 45,
+          "endPos": 60
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 59,
+          "endPos": 60
+        },
+        {
+          "entity": "TM",
+          "startPos": 66,
+          "endPos": 67
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 66,
+          "endPos": 70
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 69,
+          "endPos": 70
+        }
+      ]
+    },
+    {
+      "text": "can we get cars with 2y2y color tbr gearbox with 4a aggregate dt wholesaledealercountry 03 orderversion 74 orderplant 00650 foreigndealer and 37 targetstation",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 49,
+          "endPos": 50
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 49,
+          "endPos": 60
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 52,
+          "endPos": 60
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 88,
+          "endPos": 89
+        },
+        {
+          "entity": "orderPlant",
+          "startPos": 104,
+          "endPos": 105
+        },
+        {
+          "entity": "foreignDealer",
+          "startPos": 118,
+          "endPos": 122
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 118,
+          "endPos": 122
+        },
+        {
+          "entity": "targetStation",
+          "startPos": 142,
+          "endPos": 143
+        }
+      ]
+    },
+    {
+      "text": "can we get cars with a2a2 color 4050003 (88-2018) pin 0c internalcolor 731266 commissionnumber 2y externalcolor 201840 sightglassweek tm zl and 5 seats",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 32,
+          "endPos": 48
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 32,
+          "endPos": 52
+        },
+        {
+          "entity": "PIN",
+          "startPos": 50,
+          "endPos": 52
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 54,
+          "endPos": 55
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 54,
+          "endPos": 69
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 57,
+          "endPos": 69
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 71,
+          "endPos": 76
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 95,
+          "endPos": 96
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 95,
+          "endPos": 110
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 98,
+          "endPos": 110
+        },
+        {
+          "entity": "TM",
+          "startPos": 134,
+          "endPos": 135
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 134,
+          "endPos": 138
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 137,
+          "endPos": 138
+        }
+      ]
+    },
+    {
+      "text": "can we get cars with h1h1 color f000 order status f100 body status 3958221 (88-2233) knr g000 vehiclestatus 0c roofcolor and creation date 2018-07-26",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 32,
+          "endPos": 35
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 32,
+          "endPos": 48
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 37,
+          "endPos": 48
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 50,
+          "endPos": 53
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 50,
+          "endPos": 65
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 55,
+          "endPos": 65
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 67,
+          "endPos": 83
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 67,
+          "endPos": 87
+        },
+        {
+          "entity": "KNR",
+          "startPos": 85,
+          "endPos": 87
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 89,
+          "endPos": 92
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 89,
+          "endPos": 106
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 94,
+          "endPos": 106
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 108,
+          "endPos": 109
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 108,
+          "endPos": 119
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 111,
+          "endPos": 119
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 125,
+          "endPos": 137
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 125,
+          "endPos": 148
+        }
+      ]
+    },
+    {
+      "text": "can we get cars with st1756 commissionnumber",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "commissionNumber",
+          "startPos": 21,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "can we get cars with vehiclestatus g000 f100 bodystatus creationdate 21.02.2018 3958221 (88-2218) knr and de aggregate",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "vehicleStatus",
+          "startPos": 21,
+          "endPos": 33
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 21,
+          "endPos": 38
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 35,
+          "endPos": 38
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 40,
+          "endPos": 43
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 40,
+          "endPos": 54
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 45,
+          "endPos": 54
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 56,
+          "endPos": 67
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 56,
+          "endPos": 67
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 56,
+          "endPos": 78
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 80,
+          "endPos": 96
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 80,
+          "endPos": 100
+        },
+        {
+          "entity": "KNR",
+          "startPos": 98,
+          "endPos": 100
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 106,
+          "endPos": 107
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 106,
+          "endPos": 117
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 109,
+          "endPos": 117
+        }
+      ]
+    },
+    {
+      "text": "can we get list of cars with 3958221 (88-2018) knr bf aggregate 2y2y color c000 orderstatus dt wholesaledealercountry d500 vehiclestatus and sqn geartype",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 29,
+          "endPos": 45
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 29,
+          "endPos": 49
+        },
+        {
+          "entity": "KNR",
+          "startPos": 47,
+          "endPos": 49
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 51,
+          "endPos": 52
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 51,
+          "endPos": 62
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 54,
+          "endPos": 62
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 75,
+          "endPos": 78
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 75,
+          "endPos": 90
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 80,
+          "endPos": 90
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 118,
+          "endPos": 121
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 118,
+          "endPos": 135
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 123,
+          "endPos": 135
+        }
+      ]
+    },
+    {
+      "text": "can we get list of cars with 74 orderplant 0c internalcolor 83 targetstation 00650 foreigndealer 4k vehicleseries 03 orderversion and creationdate 28.09.2012",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "orderPlant",
+          "startPos": 29,
+          "endPos": 30
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 43,
+          "endPos": 44
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 43,
+          "endPos": 58
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 46,
+          "endPos": 58
+        },
+        {
+          "entity": "targetStation",
+          "startPos": 60,
+          "endPos": 61
+        },
+        {
+          "entity": "foreignDealer",
+          "startPos": 77,
+          "endPos": 81
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 97,
+          "endPos": 98
+        },
+        {
+          "entity": "vehicleSeriesEntity",
+          "startPos": 97,
+          "endPos": 112
+        },
+        {
+          "entity": "vehicleSeries",
+          "startPos": 100,
+          "endPos": 112
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 114,
+          "endPos": 115
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 134,
+          "endPos": 145
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 134,
+          "endPos": 156
+        }
+      ]
+    },
+    {
+      "text": "can we get list of cars with e000 bodystatus 731266 commissionnumber 4320003 (88-2233) pin 201843 sightglassweek 2y externalcolor a2 roofcolor zl tm and 4 seats",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 29,
+          "endPos": 32
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 29,
+          "endPos": 43
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 34,
+          "endPos": 43
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 45,
+          "endPos": 50
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 45,
+          "endPos": 50
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 69,
+          "endPos": 85
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 69,
+          "endPos": 89
+        },
+        {
+          "entity": "PIN",
+          "startPos": 87,
+          "endPos": 89
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 113,
+          "endPos": 114
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 113,
+          "endPos": 128
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 116,
+          "endPos": 128
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 130,
+          "endPos": 131
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 130,
+          "endPos": 141
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 133,
+          "endPos": 141
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 143,
+          "endPos": 144
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 143,
+          "endPos": 147
+        },
+        {
+          "entity": "TM",
+          "startPos": 146,
+          "endPos": 147
+        }
+      ]
+    },
+    {
+      "text": "can we have list of all cars",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "can you fly?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can you help me",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "can't do it",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "cook me something",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "do you play games?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "don't do it",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "don't do that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "dont you ever sleep?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "exit",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "get me these cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "get me these details",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "getting tired of you",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "give more details",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "gnocchi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "good morning",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "have you any dreams?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help me",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help please",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "her cat has no teeth",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how are you?",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how many 2y2y cars have tbr gearbox with 4a aggregate dt wholesaledealercountry 03 orderversion 74 orderplant 00650 foreigndealer and 37 targetstation",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 41,
+          "endPos": 42
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 41,
+          "endPos": 52
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 44,
+          "endPos": 52
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 80,
+          "endPos": 81
+        },
+        {
+          "entity": "orderPlant",
+          "startPos": 96,
+          "endPos": 97
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 110,
+          "endPos": 114
+        },
+        {
+          "entity": "targetStation",
+          "startPos": 134,
+          "endPos": 135
+        }
+      ]
+    },
+    {
+      "text": "how many a2a2 cars have 4050003 (88-2018) pin 0c internalcolor 731266 commissionnumber 2y externalcolor 201840 sightglassweek tm zl and 5 seats",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 24,
+          "endPos": 40
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 24,
+          "endPos": 44
+        },
+        {
+          "entity": "PIN",
+          "startPos": 42,
+          "endPos": 44
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 46,
+          "endPos": 47
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 46,
+          "endPos": 61
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 49,
+          "endPos": 61
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 63,
+          "endPos": 68
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 87,
+          "endPos": 88
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 87,
+          "endPos": 102
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 90,
+          "endPos": 102
+        },
+        {
+          "entity": "TM",
+          "startPos": 126,
+          "endPos": 127
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 126,
+          "endPos": 130
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 129,
+          "endPos": 130
+        }
+      ]
+    },
+    {
+      "text": "how many h1h1 cars",
+      "intent": "CountOfCars",
+      "entities": []
+    },
+    {
+      "text": "how many h1h1 cars with f000 order status f100 body status 3958221 (88-2233) knr g000 vehiclestatus 0c roofcolor and creation date 2018-07-26",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 24,
+          "endPos": 27
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 24,
+          "endPos": 40
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 29,
+          "endPos": 40
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 42,
+          "endPos": 45
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 42,
+          "endPos": 57
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 47,
+          "endPos": 57
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 59,
+          "endPos": 75
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 59,
+          "endPos": 79
+        },
+        {
+          "entity": "KNR",
+          "startPos": 77,
+          "endPos": 79
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 81,
+          "endPos": 84
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 81,
+          "endPos": 98
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 86,
+          "endPos": 98
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 100,
+          "endPos": 101
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 100,
+          "endPos": 111
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 103,
+          "endPos": 111
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 117,
+          "endPos": 129
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 117,
+          "endPos": 140
+        }
+      ]
+    },
+    {
+      "text": "how many l5l5 cars with f000 orderstatus 8w vehicleseries se3308 commisionnumber l5 externalcolor",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 24,
+          "endPos": 27
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 24,
+          "endPos": 39
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 29,
+          "endPos": 39
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 41,
+          "endPos": 42
+        },
+        {
+          "entity": "vehicleSeriesEntity",
+          "startPos": 41,
+          "endPos": 56
+        },
+        {
+          "entity": "vehicleSeries",
+          "startPos": 44,
+          "endPos": 56
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 58,
+          "endPos": 63
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 81,
+          "endPos": 82
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 81,
+          "endPos": 96
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 84,
+          "endPos": 96
+        }
+      ]
+    },
+    {
+      "text": "how many of these have 03 orderversion 74 orderplant 00650 foreigndealer 4k vehicleseries 0c internalcolor 83 targetstation and creationdate 28.09.2012",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "orderVersion",
+          "startPos": 23,
+          "endPos": 24
+        },
+        {
+          "entity": "orderPlant",
+          "startPos": 39,
+          "endPos": 40
+        },
+        {
+          "entity": "foreignDealer",
+          "startPos": 53,
+          "endPos": 57
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 73,
+          "endPos": 74
+        },
+        {
+          "entity": "vehicleSeriesEntity",
+          "startPos": 73,
+          "endPos": 88
+        },
+        {
+          "entity": "vehicleSeries",
+          "startPos": 76,
+          "endPos": 88
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 90,
+          "endPos": 91
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 90,
+          "endPos": 105
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 93,
+          "endPos": 105
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 110,
+          "endPos": 122
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 128,
+          "endPos": 139
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 128,
+          "endPos": 150
+        }
+      ]
+    },
+    {
+      "text": "how many of these have 0c externalcolor f000 bodystatus 4 seats and 4a aggregate",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 23,
+          "endPos": 24
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 23,
+          "endPos": 38
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 26,
+          "endPos": 38
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 40,
+          "endPos": 43
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 40,
+          "endPos": 54
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 45,
+          "endPos": 54
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 68,
+          "endPos": 69
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 68,
+          "endPos": 79
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 71,
+          "endPos": 79
+        }
+      ]
+    },
+    {
+      "text": "how many of these have 2y externalcolor a2 roofcolor e000 bodystatus 731266 commissionnumber 4320003 (88-2233) pin 201843 sightglassweek zl tm and 4 seats",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 23,
+          "endPos": 24
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 23,
+          "endPos": 38
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 26,
+          "endPos": 38
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 40,
+          "endPos": 41
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 40,
+          "endPos": 51
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 43,
+          "endPos": 51
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 53,
+          "endPos": 56
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 53,
+          "endPos": 67
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 58,
+          "endPos": 67
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 69,
+          "endPos": 74
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 69,
+          "endPos": 74
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 93,
+          "endPos": 109
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 93,
+          "endPos": 113
+        },
+        {
+          "entity": "PIN",
+          "startPos": 111,
+          "endPos": 113
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 137,
+          "endPos": 138
+        },
+        {
+          "entity": "TM",
+          "startPos": 140,
+          "endPos": 141
+        }
+      ]
+    },
+    {
+      "text": "how many of these have 2y2y color 3958221 (88-2018) knr bf aggregate c000 orderstatus sqn geartype dt wholesaledealercountry and d500 vehiclestatus",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 34,
+          "endPos": 50
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 34,
+          "endPos": 54
+        },
+        {
+          "entity": "KNR",
+          "startPos": 52,
+          "endPos": 54
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 56,
+          "endPos": 57
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 56,
+          "endPos": 67
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 59,
+          "endPos": 67
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 69,
+          "endPos": 72
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 69,
+          "endPos": 84
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 74,
+          "endPos": 84
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 129,
+          "endPos": 132
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 129,
+          "endPos": 146
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 134,
+          "endPos": 146
+        }
+      ]
+    },
+    {
+      "text": "how old are you?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i am tired of you",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i would like to cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "i would like to stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "i'd rather ride my bike",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "lock them",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "please cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "please show details",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "please stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "quit",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "show all cars with 8w model and tbr gearbox",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 19,
+          "endPos": 20
+        },
+        {
+          "entity": "vehicleSeriesEntity",
+          "startPos": 19,
+          "endPos": 26
+        },
+        {
+          "entity": "vehicleSeries",
+          "startPos": 22,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "show all h1h1 cars with f000 orderstatus f100 bodystatus and creation date 2018-07-26",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 24,
+          "endPos": 27
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 24,
+          "endPos": 39
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 29,
+          "endPos": 39
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 41,
+          "endPos": 44
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 41,
+          "endPos": 55
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 46,
+          "endPos": 55
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 61,
+          "endPos": 73
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 61,
+          "endPos": 84
+        }
+      ]
+    },
+    {
+      "text": "show cars with color h1h1 orderstatus g000 5 seats creation date 23.07.2018 aggregate 2sd",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "orderStatus",
+          "startPos": 26,
+          "endPos": 36
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 26,
+          "endPos": 41
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 38,
+          "endPos": 41
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 51,
+          "endPos": 63
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 51,
+          "endPos": 74
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 76,
+          "endPos": 84
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 76,
+          "endPos": 88
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 86,
+          "endPos": 88
+        }
+      ]
+    },
+    {
+      "text": "show cars with h1h1 color and order status g000 and bodystatus h000 and creationdate 23.09.2018",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "orderStatus",
+          "startPos": 30,
+          "endPos": 41
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 30,
+          "endPos": 46
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 43,
+          "endPos": 46
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 52,
+          "endPos": 61
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 52,
+          "endPos": 66
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 63,
+          "endPos": 66
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 72,
+          "endPos": 83
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 72,
+          "endPos": 94
+        }
+      ]
+    },
+    {
+      "text": "show cars with h1h1 color and orderstatus g000 and bodystatus g000 and creationdate 23.09.2018",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "orderStatus",
+          "startPos": 30,
+          "endPos": 40
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 30,
+          "endPos": 45
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 42,
+          "endPos": 45
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 51,
+          "endPos": 60
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 51,
+          "endPos": 65
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 62,
+          "endPos": 65
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 71,
+          "endPos": 82
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 71,
+          "endPos": 93
+        }
+      ]
+    },
+    {
+      "text": "show me all cars with h1h1 color h1 internal color 0c external color and c1 roof color",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 33,
+          "endPos": 34
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 33,
+          "endPos": 49
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 36,
+          "endPos": 49
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 51,
+          "endPos": 52
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 51,
+          "endPos": 67
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 54,
+          "endPos": 67
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 73,
+          "endPos": 74
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 73,
+          "endPos": 85
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 76,
+          "endPos": 85
+        }
+      ]
+    },
+    {
+      "text": "show me cars with 0c internalcolor cars with 8w tm",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 18,
+          "endPos": 19
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 18,
+          "endPos": 33
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 21,
+          "endPos": 33
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 45,
+          "endPos": 46
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 45,
+          "endPos": 49
+        },
+        {
+          "entity": "TM",
+          "startPos": 48,
+          "endPos": 49
+        }
+      ]
+    },
+    {
+      "text": "show me cars with 2y2y color tbr gearbox 4a aggregate dt wholesaledealercountry 03 orderversion 74 orderplant 00650 foreigndealer and 37 targetstation",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 41,
+          "endPos": 42
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 41,
+          "endPos": 52
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 44,
+          "endPos": 52
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 80,
+          "endPos": 81
+        },
+        {
+          "entity": "orderPlant",
+          "startPos": 96,
+          "endPos": 97
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 110,
+          "endPos": 114
+        },
+        {
+          "entity": "foreignDealer",
+          "startPos": 110,
+          "endPos": 114
+        },
+        {
+          "entity": "targetStation",
+          "startPos": 134,
+          "endPos": 135
+        }
+      ]
+    },
+    {
+      "text": "show me cars with a2a2 color 4050003 (88-2018) pin 0c internalcolor 731266 commissionnumber 2y externalcolor 201840 sightglassweek tm zl and 5 seats",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 29,
+          "endPos": 45
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 29,
+          "endPos": 49
+        },
+        {
+          "entity": "PIN",
+          "startPos": 47,
+          "endPos": 49
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 51,
+          "endPos": 52
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 51,
+          "endPos": 66
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 54,
+          "endPos": 66
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 68,
+          "endPos": 73
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 92,
+          "endPos": 93
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 92,
+          "endPos": 107
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 95,
+          "endPos": 107
+        },
+        {
+          "entity": "TM",
+          "startPos": 131,
+          "endPos": 132
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 131,
+          "endPos": 135
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 134,
+          "endPos": 135
+        }
+      ]
+    },
+    {
+      "text": "show me cars with color h1h1 seats 5 order status g000 body status f000 aggregate 4a knr 4220010 (88-2012)",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "orderStatus",
+          "startPos": 37,
+          "endPos": 48
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 37,
+          "endPos": 53
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 50,
+          "endPos": 53
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 55,
+          "endPos": 65
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 55,
+          "endPos": 70
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 67,
+          "endPos": 70
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 72,
+          "endPos": 80
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 72,
+          "endPos": 83
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 82,
+          "endPos": 83
+        },
+        {
+          "entity": "KNR",
+          "startPos": 85,
+          "endPos": 87
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 85,
+          "endPos": 105
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 89,
+          "endPos": 105
+        }
+      ]
+    },
+    {
+      "text": "show me cars with h1h1 color 5 seats creationdate 23.08.2018 body status g000 orderstatus f000 knr sdfsdf tm def aggregate 2sd orderversion 343e",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "creationDate",
+          "startPos": 37,
+          "endPos": 48
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 37,
+          "endPos": 59
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 61,
+          "endPos": 71
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 61,
+          "endPos": 76
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 73,
+          "endPos": 76
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 78,
+          "endPos": 88
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 78,
+          "endPos": 93
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 90,
+          "endPos": 93
+        },
+        {
+          "entity": "KNR",
+          "startPos": 95,
+          "endPos": 97
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 95,
+          "endPos": 104
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 99,
+          "endPos": 104
+        },
+        {
+          "entity": "TM",
+          "startPos": 106,
+          "endPos": 107
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 106,
+          "endPos": 111
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 109,
+          "endPos": 111
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 113,
+          "endPos": 121
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 113,
+          "endPos": 125
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 123,
+          "endPos": 125
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 140,
+          "endPos": 143
+        }
+      ]
+    },
+    {
+      "text": "show me cars with h1h1 color 5 seats g000 orderstatus h000 body status",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 37,
+          "endPos": 40
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 37,
+          "endPos": 52
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 42,
+          "endPos": 52
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 54,
+          "endPos": 57
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 54,
+          "endPos": 69
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 59,
+          "endPos": 69
+        }
+      ]
+    },
+    {
+      "text": "show me cars with h1h1 color 5 seats order status g000 body status f000",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "orderStatus",
+          "startPos": 37,
+          "endPos": 48
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 37,
+          "endPos": 53
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 50,
+          "endPos": 53
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 55,
+          "endPos": 65
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 55,
+          "endPos": 70
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 67,
+          "endPos": 70
+        }
+      ]
+    },
+    {
+      "text": "show me cars with h1h1 color f000 order status f100 body status 3958221 (88-2233) knr g000 vehiclestatus 0c roofcolor and creation date 2018-07-26",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 29,
+          "endPos": 32
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 29,
+          "endPos": 45
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 34,
+          "endPos": 45
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 47,
+          "endPos": 50
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 47,
+          "endPos": 62
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 52,
+          "endPos": 62
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 64,
+          "endPos": 80
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 64,
+          "endPos": 84
+        },
+        {
+          "entity": "KNR",
+          "startPos": 82,
+          "endPos": 84
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 86,
+          "endPos": 89
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 86,
+          "endPos": 103
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 91,
+          "endPos": 103
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 105,
+          "endPos": 106
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 105,
+          "endPos": 116
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 108,
+          "endPos": 116
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 122,
+          "endPos": 134
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 122,
+          "endPos": 145
+        }
+      ]
+    },
+    {
+      "text": "show me cars with h1h1 in color with 8w model",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 37,
+          "endPos": 38
+        },
+        {
+          "entity": "vehicleSeriesEntity",
+          "startPos": 37,
+          "endPos": 44
+        },
+        {
+          "entity": "vehicleSeries",
+          "startPos": 40,
+          "endPos": 44
+        }
+      ]
+    },
+    {
+      "text": "show me details",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "show me info",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "show me list of all cars",
+      "intent": "SearchForCars",
+      "entities": []
+    },
+    {
+      "text": "show me list of cars with 00650 foreigndealer 4k vehicleseries 03 orderversion 74 orderplant 0c internalcolor 83 targetstation and creationdate 28.09.2012",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "foreignDealer",
+          "startPos": 26,
+          "endPos": 30
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 46,
+          "endPos": 47
+        },
+        {
+          "entity": "vehicleSeriesEntity",
+          "startPos": 46,
+          "endPos": 61
+        },
+        {
+          "entity": "vehicleSeries",
+          "startPos": 49,
+          "endPos": 61
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 63,
+          "endPos": 64
+        },
+        {
+          "entity": "orderPlant",
+          "startPos": 79,
+          "endPos": 80
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 93,
+          "endPos": 94
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 93,
+          "endPos": 108
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 96,
+          "endPos": 108
+        },
+        {
+          "entity": "targetStation",
+          "startPos": 110,
+          "endPos": 111
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 131,
+          "endPos": 142
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 131,
+          "endPos": 153
+        }
+      ]
+    },
+    {
+      "text": "show me list of cars with 2y2y color 3958221 (88-2018) knr bf aggregate c000 orderstatus sqn geartype dt wholesaledealercountry and d500 vehiclestatus",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 37,
+          "endPos": 53
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 37,
+          "endPos": 57
+        },
+        {
+          "entity": "KNR",
+          "startPos": 55,
+          "endPos": 57
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 59,
+          "endPos": 60
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 59,
+          "endPos": 70
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 62,
+          "endPos": 70
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 72,
+          "endPos": 75
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 72,
+          "endPos": 87
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 77,
+          "endPos": 87
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 132,
+          "endPos": 135
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 132,
+          "endPos": 149
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 137,
+          "endPos": 149
+        }
+      ]
+    },
+    {
+      "text": "show me list of cars with 4320003 (88-2233) pin 201843 sightglassweek 2y externalcolor a2 roofcolor e000 bodystatus 731266 commissionnumber zl tm and 4 seats",
+      "intent": "SearchForCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 26,
+          "endPos": 42
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 26,
+          "endPos": 46
+        },
+        {
+          "entity": "PIN",
+          "startPos": 44,
+          "endPos": 46
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 70,
+          "endPos": 71
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 70,
+          "endPos": 85
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 73,
+          "endPos": 85
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 87,
+          "endPos": 88
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 87,
+          "endPos": 98
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 90,
+          "endPos": 98
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 100,
+          "endPos": 103
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 100,
+          "endPos": 114
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 105,
+          "endPos": 114
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 116,
+          "endPos": 121
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 140,
+          "endPos": 141
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 140,
+          "endPos": 144
+        },
+        {
+          "entity": "TM",
+          "startPos": 143,
+          "endPos": 144
+        }
+      ]
+    },
+    {
+      "text": "show me these cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "show me these records",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "show them to me",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "show these cars",
+      "intent": "PreviousCars",
+      "entities": []
+    },
+    {
+      "text": "spaghetti",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "tell me the count of cars with 2y2y color tbr gearbox 4a aggregate dt wholesaledealercountry 03 orderversion 74 orderplant 00650 foreigndealer and 37 targetstation",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 54,
+          "endPos": 55
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 54,
+          "endPos": 65
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 57,
+          "endPos": 65
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 93,
+          "endPos": 94
+        },
+        {
+          "entity": "orderPlant",
+          "startPos": 109,
+          "endPos": 110
+        },
+        {
+          "entity": "foreignDealer",
+          "startPos": 123,
+          "endPos": 127
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 123,
+          "endPos": 127
+        },
+        {
+          "entity": "targetStation",
+          "startPos": 147,
+          "endPos": 148
+        }
+      ]
+    },
+    {
+      "text": "tell me the count of cars with a2a2 color 4050003 (88-2018) pin 0c internalcolor 731266 commissionnumber 2y externalcolor 201840 sightglassweek tm zl and 5 seats",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 42,
+          "endPos": 58
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 42,
+          "endPos": 62
+        },
+        {
+          "entity": "PIN",
+          "startPos": 60,
+          "endPos": 62
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 64,
+          "endPos": 65
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 64,
+          "endPos": 79
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 67,
+          "endPos": 79
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 81,
+          "endPos": 86
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 105,
+          "endPos": 106
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 105,
+          "endPos": 120
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 108,
+          "endPos": 120
+        },
+        {
+          "entity": "TM",
+          "startPos": 144,
+          "endPos": 145
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 144,
+          "endPos": 148
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 147,
+          "endPos": 148
+        }
+      ]
+    },
+    {
+      "text": "tell me the count of cars with h1h1 color f000 order status f100 body status 3958221 (88-2233) knr g000 vehiclestatus 0c roofcolor and creation date 2018-07-26",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 42,
+          "endPos": 45
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 42,
+          "endPos": 58
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 47,
+          "endPos": 58
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 60,
+          "endPos": 63
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 60,
+          "endPos": 75
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 65,
+          "endPos": 75
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 77,
+          "endPos": 93
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 77,
+          "endPos": 97
+        },
+        {
+          "entity": "KNR",
+          "startPos": 95,
+          "endPos": 97
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 99,
+          "endPos": 102
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 99,
+          "endPos": 116
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 104,
+          "endPos": 116
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 118,
+          "endPos": 119
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 118,
+          "endPos": 129
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 121,
+          "endPos": 129
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 135,
+          "endPos": 147
+        },
+        {
+          "entity": "creationDateEntity",
+          "startPos": 135,
+          "endPos": 158
+        }
+      ]
+    },
+    {
+      "text": "what can you help me with",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what do i do now",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what is stock of cars with 2y2y color 3958221 (88-2018) knr bf aggregate sce geartype 00650 foreigndealer 731266 commissionnumber and 4 seats",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 38,
+          "endPos": 54
+        },
+        {
+          "entity": "knrEntity",
+          "startPos": 38,
+          "endPos": 58
+        },
+        {
+          "entity": "KNR",
+          "startPos": 56,
+          "endPos": 58
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 60,
+          "endPos": 61
+        },
+        {
+          "entity": "aggregateEntity",
+          "startPos": 60,
+          "endPos": 71
+        },
+        {
+          "entity": "aggregate",
+          "startPos": 63,
+          "endPos": 71
+        },
+        {
+          "entity": "foreignDealer",
+          "startPos": 86,
+          "endPos": 90
+        },
+        {
+          "entity": "commissionNumber",
+          "startPos": 106,
+          "endPos": 111
+        }
+      ]
+    },
+    {
+      "text": "what is stock of cars with 30.08.18 creationdate d800 orderstatus 00 orderversion 22 orderplant e700 vehiclestatus 4k vehicleseries yk wholesaledealercountry",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "creationDateEntity",
+          "startPos": 27,
+          "endPos": 47
+        },
+        {
+          "entity": "creationDate",
+          "startPos": 36,
+          "endPos": 47
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 49,
+          "endPos": 52
+        },
+        {
+          "entity": "orderEntity",
+          "startPos": 49,
+          "endPos": 64
+        },
+        {
+          "entity": "orderStatus",
+          "startPos": 54,
+          "endPos": 64
+        },
+        {
+          "entity": "orderVersion",
+          "startPos": 66,
+          "endPos": 67
+        },
+        {
+          "entity": "orderPlant",
+          "startPos": 82,
+          "endPos": 83
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 96,
+          "endPos": 99
+        },
+        {
+          "entity": "vehicleEntity",
+          "startPos": 96,
+          "endPos": 113
+        },
+        {
+          "entity": "vehicleStatus",
+          "startPos": 101,
+          "endPos": 113
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 115,
+          "endPos": 116
+        },
+        {
+          "entity": "vehicleSeriesEntity",
+          "startPos": 115,
+          "endPos": 130
+        },
+        {
+          "entity": "vehicleSeries",
+          "startPos": 118,
+          "endPos": 130
+        }
+      ]
+    },
+    {
+      "text": "what is stock of cars with 3542053 (22-2118) pin 201835 sightglassweek 4a tm 55 targetstation f4 colorexternal f4 colorroof mz colorinternal f100 bodystatus",
+      "intent": "CountOfCars",
+      "entities": [
+        {
+          "entity": "entityValue",
+          "startPos": 27,
+          "endPos": 43
+        },
+        {
+          "entity": "pinEntity",
+          "startPos": 27,
+          "endPos": 47
+        },
+        {
+          "entity": "PIN",
+          "startPos": 45,
+          "endPos": 47
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 71,
+          "endPos": 72
+        },
+        {
+          "entity": "tmEntity",
+          "startPos": 71,
+          "endPos": 75
+        },
+        {
+          "entity": "TM",
+          "startPos": 74,
+          "endPos": 75
+        },
+        {
+          "entity": "targetStation",
+          "startPos": 77,
+          "endPos": 78
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 94,
+          "endPos": 95
+        },
+        {
+          "entity": "externalColorEntity",
+          "startPos": 94,
+          "endPos": 109
+        },
+        {
+          "entity": "externalColor",
+          "startPos": 97,
+          "endPos": 109
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 111,
+          "endPos": 112
+        },
+        {
+          "entity": "roofEntity",
+          "startPos": 111,
+          "endPos": 122
+        },
+        {
+          "entity": "roofColor",
+          "startPos": 114,
+          "endPos": 122
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 124,
+          "endPos": 125
+        },
+        {
+          "entity": "internalColorEntity",
+          "startPos": 124,
+          "endPos": 139
+        },
+        {
+          "entity": "internalColor",
+          "startPos": 127,
+          "endPos": 139
+        },
+        {
+          "entity": "entityValue",
+          "startPos": 141,
+          "endPos": 144
+        },
+        {
+          "entity": "bodyEntity",
+          "startPos": 141,
+          "endPos": 155
+        },
+        {
+          "entity": "bodyStatus",
+          "startPos": 146,
+          "endPos": 155
+        }
+      ]
+    },
+    {
+      "text": "what is your name",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "what's your age?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "whats your name",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what's your name",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "who are you",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "who is your boss?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "world wide pants",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "yo",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "you are boring",
+      "intent": "None",
+      "entities": []
+    }
+  ],
+  "settings": []
+}

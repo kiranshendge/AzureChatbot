@@ -1,12 +1,11 @@
-# Basic Bot template
+# Instructions to import bot on portal.azure.com/ luis on luis.api
 
-This bot has been created using [Microsoft Bot Framework](https://dev.botframework.com),
-
-This samples shows how to:
-- Use [LUIS](https://luis.ai) to implement core AI capabilities
-- Implement a multi-turn conversation using Dialogs
-- Handle user interruptions for such things as Help or Cancel
-- Prompt for and validate requests for information from the user
+1. Create bot with luis option in portal.azure.com
+2. Go to luis, import json for luis from github (eg luisdemokiran-bbca.json). Change name, version. Publish.
+3. Go to bot on azure and upload additional files needed from github repo e.g. .bot file, .js, mapping.json, resources folder etc
+4. Run npm install on bot console in azure
+5. Check output on bot in azure and ensure there are no errors.
+6. Run the bot
 
 # Prerequisite to run this bot locally
 - Download the bot code from the Build blade in the Azure Portal
@@ -34,27 +33,6 @@ This samples shows how to:
 
 ## Deploy this bot to Azure
 See [here](./deploymentScripts/DEPLOY.md) to learn more about deploying this bot to Azure and using the CLI tools to build the LUIS models this bot depends on.
-
-## Further Reading
-- [Bot Framework Documentation](https://docs.botframework.com)
-- [Bot basics](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
-- [Activity processing](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-activity-processing?view=azure-bot-service-4.0)
-- [LUIS](https://luis.ai)
-- [Prompt Types](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-prompts?view=azure-bot-service-4.0&tabs=javascript)
-- [Azure Bot Service Introduction](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-- [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
-- [QnA Maker](https://qnamaker.ai)
-
-## Additional Resources
-
-### Dependencies
-
-- **[Restify](http://restify.com)** Used to host the web service for the bot, and for making REST calls
-- **[dotenv](https://github.com/motdotla/dotenv)** Used to manage environmental variables
-
-### Project Structure
-
-`index.js` references the bot and starts a Restify server. `bot.js` loads the dialog type you selected when running the generator and adds it as the default dialog. 
 
 ### Configuring the bot
 
